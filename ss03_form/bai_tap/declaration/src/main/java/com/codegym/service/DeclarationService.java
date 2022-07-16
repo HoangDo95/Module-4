@@ -26,4 +26,6 @@ public interface DeclarationService {
     String[] getOutMonth();
 
     String[] getOutYear();
+
+    void showCreate(Declaration declaration);
 }

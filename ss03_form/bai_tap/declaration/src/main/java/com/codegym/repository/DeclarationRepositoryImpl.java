@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class DeclarationRepositoryImpl implements DeclarationRepository{
+public class DeclarationRepositoryImpl implements DeclarationRepository {
     static List<Declaration> declarationList = new ArrayList<>();
     String[] year = new String[]{"1989", "1990", "...", "2022"};
     String[] gender = new String[]{"Male", "Female", "Other"};
@@ -19,9 +19,11 @@ public class DeclarationRepositoryImpl implements DeclarationRepository{
     String[] outMonth = new String[]{"1", "2", "3", "4", "...", "12"};
     String[] inputYear = new String[]{"2019", "2020", "2021", "2022"};
     String[] outYear = new String[]{"2019", "2020", "2021", "2022"};
+
     static {
         declarationList.add(new Declaration("1", "Hoang", "1995", "Male", "Viet Nam", "123456789", "car", "43A-99999", "3", "1", "2", "2021", "2", "3", "2021", "Da Nang"));
     }
+
     @Override
     public List<Declaration> showList() {
         return declarationList;
@@ -76,5 +78,10 @@ public class DeclarationRepositoryImpl implements DeclarationRepository{
     @Override
     public String[] getOutYear() {
         return outYear;
+    }
+
+    @Override
+    public void showCreate(Declaration declaration) {
+        declarationList.add(declaration);
     }
 }

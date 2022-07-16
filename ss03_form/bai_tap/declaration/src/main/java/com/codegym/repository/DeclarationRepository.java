@@ -26,4 +26,6 @@ public interface DeclarationRepository {
     String[] getOutMonth();
 
     String[] getOutYear();
+
+    void showCreate(Declaration declaration);
 }

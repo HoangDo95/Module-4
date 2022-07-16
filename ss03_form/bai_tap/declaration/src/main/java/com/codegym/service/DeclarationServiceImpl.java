@@ -66,4 +66,9 @@ public class DeclarationServiceImpl implements DeclarationService{
     public String[] getOutYear() {
         return declarationRepository.getOutYear();
     }
+
+    @Override
+    public void showCreate(Declaration declaration) {
+        declarationRepository.showCreate(declaration);
+    }
 }
