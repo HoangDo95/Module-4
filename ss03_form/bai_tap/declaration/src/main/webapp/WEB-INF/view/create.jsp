@@ -11,132 +11,100 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<h3 class="col-lg-12 text-center align-content-center">TỜ KHAI Y TẾ</h3>
-<h5>ĐÂY LÀ TÀI LIỆU QUAN TRỌNG ANH/CHỊ SẼ GIÚP CƠ QUAN Y TẾ LIÊN LẠC KHI CẦN THIẾT ĐỂ PHÒNG CHỐNG DỊCH BỆNH TRUYỀN
-    NHIỄM</h5>
-<span class="text-danger"> Khuyến cáo : Khai báo thông tin sai là vi phạm pháp luật Việt Nam và có thể bị xử lý hình sự</span>
-
-<div>
-    <%--@elvariable id="declaration" type=""--%>
-    <form:form action="/create" modelAttribute="declaration" method="post">
-        <table class="table-primary col-lg-12">
-            <tr class="col-lg-12">
-                <label>Id <span class="text-danger"> (*)</span></label>
-            </tr>
-
-            <tr class="col-lg-12">
-                <td class="col-lg-12"><form:input path="id"/></td>
-            </tr>
-
-            <tr class="col-lg-12">
-                <td class="col-lg-12"><label>Họ tên(ghi chữ in hoa) <span class="text-danger">(*)</span></label></td>
-            </tr>
-
-            <tr class="col-lg-12">
-                <td class="col-lg-12"><form:input path="name"/></td>
-            </tr>
-
-            <tr class="col-lg-12">
-                <td class="col-lg-3">Năm sinh <span class="text-danger">(*)</span></td>
-                <td class="col-lg-3">Giới tính <span class="text-danger">(*)</span></td>
-                <td class="col-lg-3">Quốc tịch <span class="text-danger">(*)</span></td>
-            </tr>
-
-            <tr class="col-lg-12">
-                <td class="col-lg-3">
-                    <form:select path="birthYear" items="${birthdayList}"> </form:select>
-                </td>
-                <td class="col-lg-3">
-                    <form:select path="gender" items="${genderList}"> </form:select>
-                </td>
-                <td class="col-lg-3">
-                    <form:select path="national" items="${nalionalityList}"> </form:select>
-                </td>
-            </tr>
-
-            <tr class="col-lg-12">
-                <label for="idCard">Số hộ chiếu hoặc số CMND hoặc giấy thông hành hợp pháp khác
-                    <span class="text-danger">(*)</span>
-                </label>
-            </tr>
-
-            <tr class="col-lg-12">
-                <form:input path="idCard" id="idCrad" cssClass="col-lg-12"/>
-            </tr>
-
-            <tr class="col-lg-12">
-                Thông tin đi lại <span class="text-danger">(*)</span>
-            </tr>
-
-            <tr class="col-lg-12">
+<div class="container">
+    <center><h2>TỜ KHAI Y TẾ</h2></center>
+    <center><h5>ĐÂY LÀ TÀI LIỆU QUAN TRỌNG, THÔNG TIN CỦA ANH/CHỊ SẼ GIÚP CƠ QUAN Y TẾ
+        LIÊN LẠC KHI CẦN THIẾT ĐỂ PHÒNG CHỐNG DỊCH BỆNH TRUYỀN NHIỄM</h5></center>
+    <center><p style="color: red">Khuyến cáo: Khai báo thông tin sai là vi phạm phaps luật Việt Nam và có thể sử lý hình
+        sự</p></center>
+    <form:form modelAttribute="declaration" action="/list" method="post" class="row">
+        <div class="col-12">
+            <label for="name" class="form-label">Họ và tên(IN HOA):</label>
+            <form:input path="name" id="name" cssClass="form-control"/>
+        </div>
+        <div class="col-4">
+            <label for="dayOfBirth" class="form-label">Năm sinh:</label>
+            <form:select path="birthYear" items="${birthdayList}" cssClass="form-control" id="dayOfBirth"/>
+        </div>
+        <div class="col-4">
+            <label for="gender" class="form-label">Giới tính:</label>
+            <form:select path="gender" items="${genderList}" cssClass="form-control" id="gender"/>
+        </div>
+        <div class="col-4">
+            <label for="national" class="form-label">Quốc tịch:</label>
+            <form:select path="national" items="${nalionalityList}" cssClass="form-control" id="national"/>
+        </div>
+        <div class="col-12">
+            <label for="pages" class="form-label">Số hộ chiếu hoặc số CMND hoặc giấy thông hành hớp pháp khác:</label>
+            <form:input path="idCard" cssClass="form-control" id="pages"/>
+        </div>
+        <div class="col-12">
+            <p>Thông tin đi lại:</p>
+            <div class="form-check form-check-inline">
                 <form:radiobuttons path="transportType" items="${transportType}"/>
-            </tr>
+            </div>
 
+        </div>
+        <div class="col-6">
+            <label for="number1">Số hiệu phương tiện:</label>
+            <form:input path="transportId" id="number1" cssClass="form-control"/>
+        </div>
+        <div class="col-6">
+            <label for="char">Số ghế</label>
+            <form:input path="seat" id="char" cssClass="form-control"/></div>
+        <div class="col-6">
+            <label for="dayStart">Ngày khởi hành:</label>
+            <div class="col-12">
+                <div class="col-4" style="float: left; width: 100%">
+                    <form:select path="inputDay" items="${inputDay}" cssClass="form-control" id="dayStart"/>
+                </div>
+                <div class="col-4" style="float: left; width: 100%">
+                    <form:select path="inputMonth" items="${inputMonth}" cssClass="form-control" id="dayStart"/>
+                </div>
+                <div class="col-4" style="float: left; width: 100%">
+                    <form:select path="inputYear" items="${inputYear}" cssClass="form-control" id="dayStart"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <label for="dayStart">Ngày kết thúc:</label>
+            <div class="col-12">
+                <div class="col-4" style="float: left; width: 100%">
+                    <form:select path="outDay" items="${outDay}" cssClass="form-control" id="dayStart"/>
+                </div>
+                <div class="col-4" style="float: left; width: 100%">
+                    <form:select path="outMonth" items="${outMonth}" cssClass="form-control" id="dayStart"/>
+                </div>
+                <div class="col-4" style="float: left; width: 100%">
+                    <form:select path="outYear" items="${outYear}" cssClass="form-control" id="dayStart"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <label for="floatingTextarea">Trong vòng 14 ngày qua Anh/Chị có đến tỉnh/thành phố nào?</label>
+            <div for="floatingTextarea" class="form-floating">
+                <form:textarea path="other" id="floatingTextarea" cssClass="form-control"/>
+            </div>
+        </div>
 
-            <tr class="col-lg-12">
-                <td class="col-lg-6"> Số hiệu phương tiện</td>
-                <td class="col-lg-6">Số ghế</td>
-            </tr>
-
-            <tr class="col-lg-12">
-                <td class="col-lg-6> <form:input path="transportId"/></td>
-                           <td class=" col-lg-6><form:input path="seat"/></td>
-            </tr>
-
-            <tr class="col-lg-12">
-                <td class="col-lg-6 ">Ngày khởi hành <span class="text-danger">(*)</span></td>
-                <td class="col-lg-6">Ngày kết thúc <span class="text-danger">(*)</span></td>
-            </tr>
-
-            <tr class="col-lg-12">
-
-                <td class="col-lg-6">
-                    <form:select path="inputDay">
-                        <form:options items="${inputDay}"></form:options>
-                    </form:select>
-
-                    <form:select path="inputMonth">
-                        <form:options items="${inputMonth}"></form:options>
-                    </form:select>
-
-                    <form:select path="inputYear">
-                        <form:options items="${inputYear}"></form:options>
-                    </form:select>
-                </td>
-
-                <td class="col-lg-6">
-                    <form:select path="outDay">
-                        <form:options items="${outDay}"></form:options>
-                    </form:select>
-
-                    <form:select path="outMonth">
-                        <form:options items="${outMonth}"></form:options>
-                    </form:select>
-
-                    <form:select path="outYear">
-                        <form:options items="${outYear}"></form:options>
-                    </form:select>
-                </td>
-
-            </tr>
-
-            <tr class="col-lg-12">
-                trong vòng 14 ngày qua , Anh/chị có đi đến tỉnh thành phố nào? <span class="text-danger">(*)</span>
-            </tr>
-
-            <tr class="col-lg-12">
-                <form:input path="other"/>
-            </tr>
-
-            <tr>
-                <button type="submit" class="bg-primary">Đăng kí</button>
-            </tr>
-
-        </table>
+        <a href="/list" style="margin: auto">
+            <button>Gửi tờ khai</button>
+        </a>
     </form:form>
-
 </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

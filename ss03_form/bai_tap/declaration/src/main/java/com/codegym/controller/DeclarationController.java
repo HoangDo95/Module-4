@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -22,18 +25,24 @@ public class DeclarationController {
     }
 
     @GetMapping("/create")
-    public String showCreate(Model model){
-        model.addAttribute("declaration", new Declaration());
-        model.addAttribute("birthdayList", declarationService.getBirthYear());
-        model.addAttribute("genderList", declarationService.getGender());
-        model.addAttribute("nalionalityList", declarationService.getNational());
-        model.addAttribute("transportType", declarationService.getTransportType());
-        model.addAttribute("inputDay", declarationService.getInputDay());
-        model.addAttribute("inputMonth", declarationService.getInputMonth());
-        model.addAttribute("inputYear", declarationService.getInputYear());
-        model.addAttribute("outDay", declarationService.getOutDay());
-        model.addAttribute("outMonth", declarationService.getOutMonth());
-        model.addAttribute("outYear", declarationService.getOutYear());
-        return "crate";
+    public ModelAndView showCreate(){
+        ModelAndView modelAndView = new ModelAndView("create","declaration", new Declaration());
+        modelAndView.addObject("birthdayList", declarationService.getBirthYear());
+        modelAndView.addObject("genderList", declarationService.getGender());
+        modelAndView.addObject("nalionalityList", declarationService.getNational());
+        modelAndView.addObject("transportType", declarationService.getTransportType());
+        modelAndView.addObject("inputDay", declarationService.getInputDay());
+        modelAndView.addObject("inputMonth", declarationService.getInputMonth());
+        modelAndView.addObject("inputYear", declarationService.getInputYear());
+        modelAndView.addObject("outDay", declarationService.getOutDay());
+        modelAndView.addObject("outMonth", declarationService.getOutMonth());
+        modelAndView.addObject("outYear", declarationService.getOutYear());
+        return modelAndView;
+    }
+
+    @PostMapping("/list")
+    public ModelAndView save(@ModelAttribute("declaration") Declaration declaration) {
+        ModelAndView modelAndView = new ModelAndView("list");
+        return modelAndView;
     }
 }
