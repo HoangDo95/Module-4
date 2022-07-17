@@ -7,9 +7,9 @@ import java.util.List;
 public interface EmailRepository {
     List<Email> showAll();
 
-    List<String> showString();
+    String[] showString();
 
-    List<Integer> showInteger();
+    Integer[] showInteger();
 
     Email findId(Integer id);
 

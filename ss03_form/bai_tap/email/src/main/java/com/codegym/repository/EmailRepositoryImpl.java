@@ -9,8 +9,8 @@ import java.util.List;
 @Repository
 public class EmailRepositoryImpl implements EmailRepository {
     static List<Email> emailList;
-    static List<String> sList;
-    static List<Integer> iList;
+    static String[] sList = new String[]{"English","Vietnamese","Japanese","Chinese"};
+    static Integer[] iList = new Integer[]{5,10,15,20,25,50};
 
     static {
         emailList = new ArrayList<>();
@@ -20,36 +20,18 @@ public class EmailRepositoryImpl implements EmailRepository {
         emailList.add(new Email(4, "Chinese", 5, false, "haha"));
     }
 
-    static {
-        sList = new ArrayList<>();
-        sList.add("English");
-        sList.add("Vietnamese");
-        sList.add("Japanese");
-        sList.add("Chinese");
-    }
-
-    static {
-        iList = new ArrayList<>();
-        iList.add(5);
-        iList.add(10);
-        iList.add(15);
-        iList.add(25);
-        iList.add(50);
-        iList.add(100);
-    }
-
     @Override
     public List<Email> showAll() {
         return emailList;
     }
 
     @Override
-    public List<String> showString() {
+    public String[] showString() {
         return sList;
     }
 
     @Override
-    public List<Integer> showInteger() {
+    public Integer[] showInteger() {
         return iList;
     }
 

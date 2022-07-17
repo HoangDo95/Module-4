@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -20,11 +21,7 @@ public class EmailController {
     @GetMapping("/email")
     public String showList(Model model) {
         List<Email> emailList = emailService.showAll();
-        List<String> sList = emailService.showString();
-        List<Integer> iList = emailService.showInteger();
         model.addAttribute("emailList", emailList);
-        model.addAttribute("sList", sList);
-        model.addAttribute("iList", iList);
         return "list";
     }
 
@@ -38,14 +35,9 @@ public class EmailController {
     }
 
     @PostMapping("/edit")
-    public String editEmail(@RequestParam int id, Email email, Model model) {
+    public String editEmail(@RequestParam int id, Email email, RedirectAttributes redirectAttributes) {
         emailService.edit(id, email);
-        List<Email> emailList = emailService.showAll();
-        List<String> sList = emailService.showString();
-        List<Integer> iList = emailService.showInteger();
-        model.addAttribute("emailList", emailList);
-        model.addAttribute("sList", sList);
-        model.addAttribute("iList", iList);
-        return "list";
+        redirectAttributes.addFlashAttribute("mess","Edit" + email.getId());
+        return "redirect:/email";
     }
 }

@@ -18,12 +18,12 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public List<String> showString() {
+    public String[] showString() {
         return emailRepository.showString();
     }
 
     @Override
-    public List<Integer> showInteger() {
+    public Integer[] showInteger() {
         return emailRepository.showInteger();
     }
 
