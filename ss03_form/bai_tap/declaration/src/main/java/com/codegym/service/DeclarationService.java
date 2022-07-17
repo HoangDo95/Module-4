@@ -27,5 +27,9 @@ public interface DeclarationService {
 
     String[] getOutYear();
 
-    void showCreate(Declaration declaration);
+    void create(Declaration declaration);
+
+    Declaration findId(int id);
+
+    void edit(int id, Declaration declaration);
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DeclarationServiceImpl implements DeclarationService{
+public class DeclarationServiceImpl implements DeclarationService {
     @Autowired
     DeclarationRepository declarationRepository;
 
@@ -68,7 +68,17 @@ public class DeclarationServiceImpl implements DeclarationService{
     }
 
     @Override
-    public void showCreate(Declaration declaration) {
-        declarationRepository.showCreate(declaration);
+    public void create(Declaration declaration) {
+        declarationRepository.create(declaration);
+    }
+
+    @Override
+    public Declaration findId(int id) {
+        return declarationRepository.findId(id);
+    }
+
+    @Override
+    public void edit(int id, Declaration declaration) {
+        declarationRepository.edit(id, declaration);
     }
 }

@@ -21,7 +21,7 @@ public class DeclarationRepositoryImpl implements DeclarationRepository {
     String[] outYear = new String[]{"2019", "2020", "2021", "2022"};
 
     static {
-        declarationList.add(new Declaration("1", "Hoang", "1995", "Male", "Viet Nam", "123456789", "car", "43A-99999", "3", "1", "2", "2021", "2", "3", "2021", "Da Nang"));
+        declarationList.add(new Declaration(1, "Hoang", "1995", "Male", "Viet Nam", "123456789", "car", "43A-99999", "3", "1", "2", "2021", "2", "3", "2021", "Da Nang"));
     }
 
     @Override
@@ -81,7 +81,44 @@ public class DeclarationRepositoryImpl implements DeclarationRepository {
     }
 
     @Override
-    public void showCreate(Declaration declaration) {
+    public void create(Declaration declaration) {
         declarationList.add(declaration);
+    }
+
+    @Override
+    public Declaration findId(int id) {
+        Declaration declaration = null;
+        for(Declaration item : declarationList){
+            if(item.getId() == id){
+                declaration = new Declaration(item.getId(),item.getName(),item.getBirthYear(),item.getGender(),
+                        item.getNational(),item.getIdCard(),item.getTransportType(),item.getTransportId(),
+                        item.getSeat(),item.getInputDay(),item.getInputMonth(),item.getInputYear(),
+                        item.getOutDay(),item.getOutMonth(),item.getOutYear(),item.getOther());
+            }
+        }
+        return declaration;
+    }
+
+    @Override
+    public void edit(int id, Declaration declaration) {
+        for (Declaration item : declarationList) {
+            if(item.getId() == id){
+                item.setName(declaration.getName());
+                item.setBirthYear(declaration.getBirthYear());
+                item.setGender(declaration.getGender());
+                item.setNational(declaration.getNational());
+                item.setIdCard(declaration.getIdCard());
+                item.setTransportType(declaration.getTransportType());
+                item.setTransportId(declaration.getTransportId());
+                item.setSeat(declaration.getSeat());
+                item.setInputDay(declaration.getInputDay());
+                item.setInputMonth(declaration.getInputMonth());
+                item.setInputYear(declaration.getInputYear());
+                item.setOutDay(declaration.getOutDay());
+                item.setOutMonth(declaration.getOutMonth());
+                item.setOutYear(declaration.getOutYear());
+                item.setOther(declaration.getOther());
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EmailServiceImpl implements EmailService{
+public class EmailServiceImpl implements EmailService {
     @Autowired
     EmailRepository emailRepository;
 
@@ -34,6 +34,6 @@ public class EmailServiceImpl implements EmailService{
 
     @Override
     public void edit(Integer id, Email email) {
-        emailRepository.edit(id,email);
+        emailRepository.edit(id, email);
     }
 }

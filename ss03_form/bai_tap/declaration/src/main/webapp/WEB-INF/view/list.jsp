@@ -6,7 +6,6 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
 </head>
 <body>
 <div>
@@ -35,6 +34,7 @@
             <th>outMonth</th>
             <th>outYear</th>
             <th>other</th>
+            <th>Edit</th>
         </tr>
         </thead>
         <tbody>
@@ -56,6 +56,10 @@
                 <td>${item.outMonth}</td>
                 <td>${item.outYear}</td>
                 <td>${item.other}</td>
+                <td>
+                    <a href="/edit?id=${item.id}"><input type="button" value="Edit"></a>
+
+                </td>
             </tr>
         </c:forEach>
         </tbody>

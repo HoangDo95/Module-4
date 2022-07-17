@@ -1,7 +1,7 @@
 package com.codegym.model;
 
 public class Declaration {
-    private String id;
+    private int id;
     private String name;
     private String birthYear;
     private String gender;
@@ -21,7 +21,7 @@ public class Declaration {
     public Declaration() {
     }
 
-    public Declaration(String id, String name, String birthYear, String gender, String national, String idCard, String transportType, String transportId, String seat, String inputDay, String inputMonth, String inputYear, String outDay, String outMonth, String outYear, String other) {
+    public Declaration(int id, String name, String birthYear, String gender, String national, String idCard, String transportType, String transportId, String seat, String inputDay, String inputMonth, String inputYear, String outDay, String outMonth, String outYear, String other) {
         this.id = id;
         this.name = name;
         this.birthYear = birthYear;
@@ -40,11 +40,11 @@ public class Declaration {
         this.other = other;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

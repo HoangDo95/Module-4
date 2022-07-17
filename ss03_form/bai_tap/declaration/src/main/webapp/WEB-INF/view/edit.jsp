@@ -14,7 +14,7 @@
         LIÊN LẠC KHI CẦN THIẾT ĐỂ PHÒNG CHỐNG DỊCH BỆNH TRUYỀN NHIỄM</h5></center>
     <center><p style="color: red">Khuyến cáo: Khai báo thông tin sai là vi phạm phaps luật Việt Nam và có thể sử lý hình
         sự</p></center>
-    <form:form modelAttribute="declaration" action="/create" method="post" class="row">
+    <form:form modelAttribute="declaration" action="/edit" method="post" class="row">
         <div class="col-12">
             <label for="name" class="form-label">STT</label>
             <form:input path="id" id="id" cssClass="form-control"/>
@@ -104,3 +104,4 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
+

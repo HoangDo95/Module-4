@@ -10,7 +10,7 @@ public class Email {
     public Email() {
     }
 
-    public Email(int id,String language, int pageSize, boolean filter, String signature) {
+    public Email(int id, String language, int pageSize, boolean filter, String signature) {
         this.id = id;
         this.language = language;
         this.pageSize = pageSize;
