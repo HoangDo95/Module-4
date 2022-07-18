@@ -12,8 +12,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     static {
         productList.add(new Product(1, "Iphone 13", 100, "apple"));
-        productList.add(new Product(2, "Iphone 12", 100, "apple"));
-        productList.add(new Product(3, "Iphone 11", 100, "apple"));
+        productList.add(new Product(2, "S22 Ultra", 100, "samsung"));
+        productList.add(new Product(3, "Mi 10", 100, "xiaomi"));
     }
 
     @Override
@@ -56,9 +56,9 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public List<Product> findByName(String name) {
         List<Product> findName = new ArrayList<>();
-        for (Product product : productList) {
-            if (product.getName().contains(name)) {
-                findName.add(product);
+        for (Product item : productList) {
+            if (item.getName().contains(name)) {
+                findName.add(item);
             }
         }
         return findName;
