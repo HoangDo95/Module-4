@@ -36,17 +36,11 @@ public class MusicRepositoryImpl implements MusicRepository {
 
     @Override
     public void edit(Music music) {
-        EntityTransaction entityTransaction = ConnectionUtil.entityManager.getTransaction();
-        entityTransaction.begin();
         entityManager.merge(music);
-        entityTransaction.commit();
     }
 
     @Override
     public void delete(int id) {
-        EntityTransaction entityTransaction = ConnectionUtil.entityManager.getTransaction();
-        entityTransaction.begin();
-        ConnectionUtil.entityManager.remove(ConnectionUtil.entityManager.find(Music.class, id));
-        entityTransaction.commit();
+        entityManager.remove(entityManager.find(Music.class, id));
     }
 }
