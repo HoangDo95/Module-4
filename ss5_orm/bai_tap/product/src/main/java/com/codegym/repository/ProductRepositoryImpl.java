@@ -17,7 +17,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> findAll() {
-        TypedQuery<Product> query = ConnectionUtil.entityManager.createQuery("select p from Product as p", Product.class);
+        TypedQuery<Product> query = entityManager.createQuery("select p from Product as p", Product.class);
         return query.getResultList();
     }
 
@@ -28,7 +28,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product findById(int id) {
-        TypedQuery<Product> query = ConnectionUtil.entityManager.createQuery("select p from Product as p where  p.id=:id", Product.class);
+        TypedQuery<Product> query = entityManager.createQuery("select p from Product as p where  p.id=:id", Product.class);
         query.setParameter("id", id);
         return query.getSingleResult();
     }
@@ -45,7 +45,9 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> findByName(String name) {
-        return null;
+        TypedQuery<Product> query = entityManager.createQuery("select p from Product as p where  p.name like ?1", Product.class);
+
+        return query.setParameter(1, "%" + name + "%").getResultList();
     }
 
 

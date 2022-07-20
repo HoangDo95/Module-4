@@ -1,8 +1,9 @@
 package com.codegym.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-@Entity
+@Entity(name = "music")
 public class Music {
     @Id
     private int id;

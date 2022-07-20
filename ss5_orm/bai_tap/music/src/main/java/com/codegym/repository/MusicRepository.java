@@ -11,7 +11,7 @@ public interface MusicRepository {
 
     Music findById(int id);
 
-    void edit(Music music);
+    void edit(int id,Music music);
 
     void delete(int id);
 }

@@ -28,8 +28,8 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
-    public void edit(Music music) {
-        musicRepository.edit(music);
+    public void edit(int id, Music music) {
+        musicRepository.edit(id,music);
     }
 
     @Override

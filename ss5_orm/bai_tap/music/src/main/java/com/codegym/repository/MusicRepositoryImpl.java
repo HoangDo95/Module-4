@@ -1,6 +1,7 @@
 package com.codegym.repository;
 
 import com.codegym.model.Music;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,12 +14,13 @@ import java.util.List;
 @Transactional
 @Repository
 public class MusicRepositoryImpl implements MusicRepository {
+
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
     public List<Music> showList() {
-        TypedQuery<Music> query = ConnectionUtil.entityManager.createQuery("select m from Music as m", Music.class);
+        TypedQuery<Music> query = entityManager.createQuery("select m from music as m", Music.class);
         return query.getResultList();
     }
 
@@ -29,13 +31,13 @@ public class MusicRepositoryImpl implements MusicRepository {
 
     @Override
     public Music findById(int id) {
-        TypedQuery<Music> query = ConnectionUtil.entityManager.createQuery("select m from Music as m where  m.id=:id", Music.class);
+        TypedQuery<Music> query = entityManager.createQuery("select m from music as m where  m.id=:id", Music.class);
         query.setParameter("id", id);
         return query.getSingleResult();
     }
 
     @Override
-    public void edit(Music music) {
+    public void edit(int id,Music music) {
         entityManager.merge(music);
     }
 
