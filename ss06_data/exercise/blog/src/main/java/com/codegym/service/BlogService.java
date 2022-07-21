@@ -14,4 +14,6 @@ public interface BlogService {
     void update(Blog blog);
 
     void remove(Integer id);
+
+    List<Blog> findByName(String name);
 }

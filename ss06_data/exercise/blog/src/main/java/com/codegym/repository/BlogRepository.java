@@ -7,9 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Transactional
-public interface BlogRepository extends JpaRepository<Blog,Integer> {
+public interface BlogRepository extends JpaRepository<Blog, Integer> {
+    List<Blog> findByNameContaining(String name);
 
     @Modifying
     @Query(value = "update  Blog  set day =:day, name=:name, status=:status where id=:id", nativeQuery = true)

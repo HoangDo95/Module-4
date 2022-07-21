@@ -63,4 +63,10 @@ public class BlogController {
         blogService.remove(id);
         return "redirect:/blog";
     }
+
+    @GetMapping("/search")
+    public String searchByName(@RequestParam String name,Model model) {
+        model.addAttribute("productList", blogService.findByName(name));
+        return "list";
+    }
 }
