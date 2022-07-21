@@ -1,7 +1,9 @@
 package com.codegym.controller;
 
 import com.codegym.model.Blog;
+import com.codegym.model.Category;
 import com.codegym.service.BlogService;
+import com.codegym.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +16,22 @@ import java.util.List;
 public class BlogController {
     @Autowired
     BlogService blogService;
+    @Autowired
+    CategoryService categoryService;
 
     @GetMapping("")
     public String findAll(Model model) {
         List<Blog> blogList = blogService.findAll();
         model.addAttribute("blogList", blogList);
+        List<Category> categoryList = categoryService.findAll();
+        model.addAttribute("categoryList", categoryList);
         return "/list";
     }
 
     @GetMapping("/create")
     public String showCreate(Model model) {
+        List<Category> categoryList = categoryService.findAll();
+        model.addAttribute("categoryList", categoryList);
         Blog blog = new Blog();
         model.addAttribute("blog", blog);
         return "/create";
@@ -37,6 +45,8 @@ public class BlogController {
 
     @GetMapping("/{id}/edit")
     public String showFormUpdate(@PathVariable("id") int id, Model model) {
+        List<Category> categoryList = categoryService.findAll();
+        model.addAttribute("categoryList", categoryList);
         Blog blog = blogService.findById(id);
         model.addAttribute("blog", blog);
         return "/edit";

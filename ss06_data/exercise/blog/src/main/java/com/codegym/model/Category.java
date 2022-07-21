@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Set;
 
-@Entity(name = "category")
+@Entity
 public class Category {
     @Id
     private int idC;

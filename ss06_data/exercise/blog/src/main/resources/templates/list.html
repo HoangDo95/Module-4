@@ -16,6 +16,7 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Category</th>
             <th>Day</th>
             <th>Status</th>
             <th>Edit</th>
@@ -26,6 +27,7 @@
         <tr th:each="row : ${blogList}">
             <td th:text="${row.id}"></td>
             <td th:text="${row.name}"></td>
+            <td th:text="${row.category}"></td>
             <td th:text="${row.day}"></td>
             <td th:text="${row.status}"></td>
             <td>

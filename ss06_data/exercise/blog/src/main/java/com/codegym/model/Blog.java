@@ -14,16 +14,26 @@ public class Blog {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "id_c",referencedColumnName = "id")
+    @JoinColumn(name = "id_c",referencedColumnName = "idC")
     private Category category;
+
     public Blog() {
     }
 
-    public Blog(int id, String name, String day, String status) {
+    public Blog(int id, String name, String day, String status, Category category) {
         this.id = id;
         this.name = name;
         this.day = day;
         this.status = status;
+        this.category = category;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public int getId() {
