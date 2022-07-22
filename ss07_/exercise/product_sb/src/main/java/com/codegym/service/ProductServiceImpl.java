@@ -40,11 +40,6 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
     }
 
-//    @Override
-//    public void view(Product product) {
-//        productRepository.save(product);
-//    }
-
     @Override
     public List<Product> findByName(String name) {
         return productRepository.findByNameContaining(name);

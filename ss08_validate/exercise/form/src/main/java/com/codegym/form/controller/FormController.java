@@ -21,23 +21,24 @@ public class FormController {
     FormRepository formRepository;
 
     @GetMapping("")
-    public String showList(Model model){
-        model.addAttribute("formList",formRepository.findAll());
+    public String showList(Model model) {
+        model.addAttribute("formList", formRepository.findAll());
         return "/list";
     }
+
     @GetMapping("/create")
-    public String showCreate(Model model){
+    public String showCreate(Model model) {
         model.addAttribute("form", new FormDto());
         return "/create";
     }
 
     @PostMapping("/save")
-    public String createFrom(@Validated @ModelAttribute("form")  FormDto formDto, BindingResult bindingResult) {
-        if(bindingResult.hasFieldErrors()){
+    public String createFrom(@Validated @ModelAttribute("form") FormDto formDto, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
             return "/create";
-        }else{
+        } else {
             Form form = new Form();
-            BeanUtils.copyProperties(formDto,form);
+            BeanUtils.copyProperties(formDto, form);
             formRepository.save(form);
             return "redirect:/form";
         }

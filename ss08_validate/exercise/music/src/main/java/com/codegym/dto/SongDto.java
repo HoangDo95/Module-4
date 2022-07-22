@@ -1,23 +1,22 @@
 package com.codegym.dto;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-//^[a-zA-Z\\s\\d\\p{L}]+$
+
 public class SongDto {
     private int id;
     @NotBlank
     @Size(max = 800)
-    @Pattern(regexp = "^[a-zA-Z\\\\s\\\\d\\\\p{L}]+$")
+    @Pattern(regexp = "^[A-Za-z-0-9 ]*$")
     private String name;
     @NotBlank
     @Size(max = 300)
-    @Pattern(regexp = "[@&'(\\\\\\\\s)<>#]\"")
+    @Pattern(regexp = "^[A-Za-z-0-9 ]*$")
     private String singer;
     @NotBlank
     @Size(max = 1000)
-    @Pattern(regexp = "[@&'(\\\\\\\\s)<>#]\"")
+    @Pattern(regexp = "^[A-Za-z-0-9 ]*$")
     private String style;
 
     public SongDto() {

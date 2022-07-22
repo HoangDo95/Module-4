@@ -28,9 +28,7 @@
             <td th:text="${row.singer}"></td>
             <td th:text="${row.style}"></td>
             <td>
-                <button class="btn btn-outline-danger">
-                    <a style="text-decoration: none"
-                       th:href="@{/song/{id}/edit(id=${row.id})}">Edit</a></button>
+                <a th:href="@{/song/{id}/edit(id=${row.id})}">Edit</a>
             </td>
         </tr>
         </tbody>

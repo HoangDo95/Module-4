@@ -5,10 +5,10 @@ import javax.validation.constraints.*;
 public class FormDto {
     private int id;
     @NotBlank
-    @Size(min = 2,max = 45)
+    @Size(min = 2, max = 45)
     private String name;
     @NotBlank
-    @Pattern(regexp ="^09|07\\d{8}$")
+    @Pattern(regexp = "^09|07\\d{8}$")
     private String phone;
     @NotBlank
     @Min(18)

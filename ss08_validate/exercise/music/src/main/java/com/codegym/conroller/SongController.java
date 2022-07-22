@@ -11,8 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @Controller
 @RequestMapping("/song")
 public class SongController {
@@ -45,8 +43,7 @@ public class SongController {
 
     @GetMapping("/{id}/edit")
     public String showFormUpdate(@PathVariable("id") int id, Model model) {
-        Optional<Song> song = songService.findById(id);
-        model.addAttribute("songDto", song);
+        model.addAttribute("songDto", songService.findById(id));
         return "/edit";
     }
 

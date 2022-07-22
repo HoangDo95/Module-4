@@ -24,8 +24,8 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("")
-    public ModelAndView showList(@PageableDefault(value = 1,sort = "id",direction = Sort.Direction.ASC)Pageable pageable) {
-        ModelAndView modelAndView = new ModelAndView("list","productList",productService.findAll(pageable));
+    public ModelAndView showList(@PageableDefault(value = 1, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
+        ModelAndView modelAndView = new ModelAndView("list", "productList", productService.findAll(pageable));
         return modelAndView;
     }
 
@@ -36,12 +36,12 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public String createProduct(@Validated @ModelAttribute ("product")  ProductDto productDto, BindingResult bindingResult) {
-        if(bindingResult.hasFieldErrors()){
+    public String createProduct(@Validated @ModelAttribute("product") ProductDto productDto, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
             return "/create";
-        }else{
+        } else {
             Product product = new Product();
-            BeanUtils.copyProperties(productDto,product);
+            BeanUtils.copyProperties(productDto, product);
             productService.create(product);
             return "redirect:/product";
         }
@@ -65,14 +65,8 @@ public class ProductController {
         return "redirect:/product";
     }
 
-//    @GetMapping("/{id}/view")
-//    public String view(@PathVariable Product product, Model model) {
-//        model.addAttribute("product", productService.view(product));
-//        return "/view";
-//    }
-
     @GetMapping("/search")
-    public String searchByName(@RequestParam String name,Model model) {
+    public String searchByName(@RequestParam String name, Model model) {
         model.addAttribute("productList", productService.findByName(name));
         return "list";
     }
