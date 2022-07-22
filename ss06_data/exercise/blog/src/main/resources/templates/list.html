@@ -10,6 +10,9 @@
 <p>
     <a th:href="@{/blog/create}">Add new blog</a>
 </p>
+<p>
+    <a th:href="@{/category}">Category List</a>
+</p>
 <form th:action="@{/blog/search}">
     <input type="text" placeholder="Input Search Name" name="name">
     <input type="submit" value="search">
@@ -74,7 +77,13 @@
         </tr>
         </tbody>
     </table>
+    <div>
+        <a th:href="@{'/blog'(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}">Previous</a>
+        <span th:text="${blogList.number + 1}"></span>/<span th:text="${blogList.totalPages}"></span>
+        <a th:href="@{'/blog'(page=${blogList.number + 1})}" th:if="${blogList.hasNext()}">Next</a>
+    </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous">

@@ -1,13 +1,17 @@
 package com.codegym.controller;
 
+import com.codegym.dto.ProductDto;
 import com.codegym.model.Product;
 import com.codegym.service.ProductService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,15 +31,20 @@ public class ProductController {
 
     @GetMapping("/create")
     public String showCreate(Model model) {
-        model.addAttribute("product", new Product());
+        model.addAttribute("product", new ProductDto());
         return "/create";
     }
 
     @PostMapping("/save")
-    public String createProduct(Product product) {
-        product.setId((int) (Math.random() * 10000));
-        productService.create(product);
-        return "redirect:/product";
+    public String createProduct(@Validated @ModelAttribute ("product")  ProductDto productDto, BindingResult bindingResult) {
+        if(bindingResult.hasFieldErrors()){
+            return "/create";
+        }else{
+            Product product = new Product();
+            BeanUtils.copyProperties(productDto,product);
+            productService.create(product);
+            return "redirect:/product";
+        }
     }
 
     @GetMapping("/{id}/edit")

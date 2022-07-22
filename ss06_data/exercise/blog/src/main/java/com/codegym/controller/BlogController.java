@@ -5,6 +5,9 @@ import com.codegym.model.Category;
 import com.codegym.service.BlogService;
 import com.codegym.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,17 +23,17 @@ public class BlogController {
     CategoryService categoryService;
 
     @GetMapping("")
-    public String findAll(Model model) {
-        List<Blog> blogList = blogService.findAll();
+    public String findAll(@PageableDefault(value = 2) Pageable pageable,Model model) {
+        Page<Blog> blogList = blogService.findAll(pageable);
         model.addAttribute("blogList", blogList);
-        List<Category> categoryList = categoryService.findAll();
+        Page<Category> categoryList = categoryService.findAll(pageable);
         model.addAttribute("categoryList", categoryList);
         return "/list";
     }
 
     @GetMapping("/create")
-    public String showCreate(Model model) {
-        List<Category> categoryList = categoryService.findAll();
+    public String showCreate(Pageable pageable,Model model) {
+        Page<Category> categoryList = categoryService.findAll(pageable);
         model.addAttribute("categoryList", categoryList);
         Blog blog = new Blog();
         model.addAttribute("blog", blog);
@@ -44,8 +47,8 @@ public class BlogController {
     }
 
     @GetMapping("/{id}/edit")
-    public String showFormUpdate(@PathVariable("id") int id, Model model) {
-        List<Category> categoryList = categoryService.findAll();
+    public String showFormUpdate(@PathVariable("id") int id,Pageable pageable, Model model) {
+        Page<Category> categoryList = categoryService.findAll(pageable);
         model.addAttribute("categoryList", categoryList);
         Blog blog = blogService.findById(id);
         model.addAttribute("blog", blog);
@@ -65,8 +68,8 @@ public class BlogController {
     }
 
     @GetMapping("/search")
-    public String searchByName(@RequestParam String name,Model model) {
-        model.addAttribute("productList", blogService.findByName(name));
+    public String searchByName(@RequestParam String name, @PageableDefault(value = 2) Pageable pageable, Model model) {
+        model.addAttribute("blogList", blogService.findByName(name,pageable));
         return "list";
     }
 }

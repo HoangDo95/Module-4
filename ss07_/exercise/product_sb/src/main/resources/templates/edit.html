@@ -14,15 +14,15 @@
         <input type="hidden" th:field="*{id}"/>
         <div>
             <label>Name</label>
-            <input type="text" th:field="*{name}"/>
+            <input type="text" required th:field="*{name}"/>
         </div>
         <div>
             <label>Price</label>
-            <input type="text" th:field="*{price}"/>
+            <input type="text" required th:field="*{price}"/>
         </div>
         <div>
             <label>Production</label>
-            <input type="text" th:field="*{production}"/>
+            <input type="text" required th:field="*{production}"/>
         </div>
         <input type="submit" value="Edit"/>
     </form>
