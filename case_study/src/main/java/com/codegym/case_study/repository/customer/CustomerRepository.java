@@ -1,4 +1,4 @@
-package com.codegym.case_study.repository;
+package com.codegym.case_study.repository.customer;
 
 import com.codegym.case_study.model.customer.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
