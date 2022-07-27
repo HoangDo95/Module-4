@@ -9,23 +9,36 @@
 <body>
 <div class="container">
     <div class="row">
-        <table class="table table-striped table-hover ">
-            <th:block th:each="item : ${productList}">
-                <td style="text-align: center">
-                    <div class="card" style="width: 18rem;">
-                        <a th:href="@{/product/detail/{id}(id=${item.id})}">
-                            <img th:src="@{${item.image}}" class="card-img-top p-5"
-                                 width="100px" height="300px" alt="img">
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text" th:text="${item.name}"></p>
-                            <p class="card-text" th:text="${item.price}"></p>
-                            <a class="btn btn-success" role="button" th:href="@{/product/add/__${item.id}__}">+</a>
+        <div class="col-md-9">
+            <table class="table table-striped table-hover ">
+                <th:block th:each="item : ${productList}">
+                    <td style="text-align: center">
+                        <div class="card" style="width: 18rem;">
+                            <a th:href="@{/product/detail/{id}(id=${item.id})}">
+                                <img th:src="@{${item.image}}" class="card-img-top p-5"
+                                     width="100px" height="300px" alt="img">
+                            </a>
+                            <div class="card-body">
+                                <p class="card-title" th:text="${item.name}"></p>
+                                <p class="card-text" th:text="${item.price}"></p>
+                                <a class="btn btn-success" role="button" th:href="@{/product/add/__${item.id}__}">+</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </th:block>
-        </table>
+                    </td>
+                </th:block>
+            </table>
+        </div>
+        <div class="col-md-3" th:if = "${historyProduct}">
+            <div class="card" style="width: 18rem;">
+                    <img th:src="${historyProduct.image}" class="card-img-top p-5"
+                         width="100px" height="300px" alt="img">
+                </a>
+                <div class="card-body">
+                    <p class="card-title" th:text="${historyProduct.name}"></p>
+                    <p class="card-text" th:text="${historyProduct.price}"></p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
