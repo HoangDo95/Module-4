@@ -22,10 +22,10 @@ public class BookController {
     }
 
     @GetMapping("/get")
-    public String getBook(@RequestParam int id, Model model) throws Exception {
+    public String getBook(@RequestParam int id, Model model) throws NullPointerException {
         Book book = bookService.findById(id).orElse(null);
         if (book.getCount() == 0) {
-            throw new Exception();
+            throw new NullPointerException();
         }
         model.addAttribute("book", bookService.getBook(id));
         return "redirect:/list";
@@ -41,15 +41,14 @@ public class BookController {
         return "redirect:/list";
     }
 
-    @ExceptionHandler(Exception.class)
-    public String showErrPage() {
-        if (book.getCount() == 0) {
-            return "/errorMin";
-        }
-        if (book.getCount() == 5) {
-            return "/errorMin";
-        }
-        return "/list";
+    @ExceptionHandler(NullPointerException.class)
+    public String showMin() {
+        return "/errorMin";
+
     }
 
+    @ExceptionHandler(Exception.class)
+    public String showMax() {
+        return "/errorMax";
+    }
 }

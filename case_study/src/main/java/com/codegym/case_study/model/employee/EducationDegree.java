@@ -7,8 +7,8 @@ import java.util.Set;
 public class EducationDegree {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private int idE;
-    private String nameE;
+    private int idED;
+    private String nameED;
 
     @OneToMany(mappedBy = "educationDegree")
     private Set<Employee> employeeSet;
@@ -24,25 +24,25 @@ public class EducationDegree {
     public EducationDegree() {
     }
 
-    public EducationDegree(int idE, String nameE) {
-        this.idE = idE;
-        this.nameE = nameE;
+    public EducationDegree(int idED, String nameED) {
+        this.idED = idED;
+        this.nameED = nameED;
     }
 
-    public int getIdE() {
-        return idE;
+    public int getIdED() {
+        return idED;
     }
 
-    public void setIdE(int idE) {
-        this.idE = idE;
+    public void setIdED(int idED) {
+        this.idED = idED;
     }
 
-    public String getNameE() {
-        return nameE;
+    public String getNameED() {
+        return nameED;
     }
 
-    public void setNameE(String nameE) {
-        this.nameE = nameE;
+    public void setNameED(String nameED) {
+        this.nameED = nameED;
     }
 }
 

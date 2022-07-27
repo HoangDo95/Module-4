@@ -1,15 +1,20 @@
 package com.codegym.case_study.service.customer;
 
 import com.codegym.case_study.model.customer.Customer;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.List;
+
+import java.util.Optional;
 
 public interface CustomerService {
-    List<Customer> findAll();
+    Page<Customer> findAll(Pageable pageable, String name);
 
     void save(Customer customer);
 
-    Customer findById(Integer id);
+    Optional<Customer> findById (Integer id);
 
     void update(Customer customer);
+
+    void delete(int id);
 }

@@ -1,7 +1,8 @@
-package com.codegym.case_study.service.employee;
+package com.codegym.case_study.service.employee.impl;
 
 import com.codegym.case_study.model.employee.Employee;
 import com.codegym.case_study.repository.employee.EmployeeRepository;
+import com.codegym.case_study.service.employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;
     @Override
