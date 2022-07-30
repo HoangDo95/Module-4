@@ -6,60 +6,37 @@
           crossorigin="anonymous">
 </head>
 <body>
-<h2>Customer List</h2>
-<div id="search">
-    <form th:action="@{/customer}">
-        <input type="text" placeholder="Input Search Name" name="name">
-        <input type="submit" value="search">
-    </form>
-</div>
+<h2>Category List</h2>
 <p>
-    <a th:href="@{/customer/create}">Add new form</a>
-</p>
-<p>
-    <a class="btn btn-outline-secondary" th:href="@{/}" role="button">Back HOME</a>
-
+    <a th:href="@{/category/create}">Add new blog</a>
 </p>
 <div class="container">
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>STT</th>
-            <th>NameCT</th>
+            <th>ID</th>
             <th>Name</th>
-            <th>Birthday</th>
-            <th>Gender</th>
-            <th>IdCard</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Edit</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="row : ${customerList}">
+        <tr th:each="row : ${categoryList}">
             <td th:text="${row.idC}"></td>
-            <td th:text="${row.customerType.getNameCT()}"></td>
             <td th:text="${row.nameC}"></td>
-            <td th:text="${row.birthDayC}"></td>
-            <td th:text="${row.gender == 0 ? 'Female' : 'Male'}"></td>
-            <td th:text="${row.idCardC}"></td>
-            <td th:text="${row.phoneC}"></td>
-            <td th:text="${row.email}"></td>
-            <td th:text="${row.address}"></td>
             <td>
-                <a class="btn btn-outline-primary" role="button"
-                   th:href="@{/customer/{id}/edit(id=${row.idC})}">Edit</a>
+                <button class="btn btn-outline-danger"><a style="text-decoration: none"
+                                                          th:href="@{/category/{id}/edit(id=${row.idC})}">Edit</a></button>
             </td>
+            <!--        <td><a th:href="@{/blog/{id}/edit(id=${row.id})}">edit</a></td>-->
+
             <td>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                        th:data-bs-target="'#cus' + ${row.idC}">
+                        th:data-bs-target="'#category' + ${row.idC}">
                     Delete
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" th:id="cus + ${row.idC}" data-bs-backdrop="static"
+                <div class="modal fade" th:id="category + ${row.idC}" data-bs-backdrop="static"
                      data-bs-keyboard="false"
                      tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -74,23 +51,17 @@
                                 with id = <span class="text-info" th:text="${row.idC}"></span>
                             </div>
                             <div class="modal-footer">
-                                <a th:href="@{/customer/delete(id=${row.idC})}"
-                                   class="btn btn-outline-success">Delete</a>
+                                <a th:href="@{/category/delete(id=${row.idC})}" class="btn btn-outline-success">Delete</a>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </td>
+
         </tr>
         </tbody>
     </table>
-    <center>
-        <a th:href="@{'/customer'(page=${customerList.number - 1},name = ${name})}"
-           th:if="${customerList.hasPrevious()}">Previous</a>
-        <span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages}"></span>
-        <a th:href="@{'/customer'(page=${customerList.number + 1},name = ${name})}" th:if="${customerList.hasNext()}">Next</a>
-    </center>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
