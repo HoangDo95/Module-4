@@ -30,7 +30,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .formLogin()
-                .defaultSuccessUrl("/blog").permitAll()
-                .and().authorizeRequests().anyRequest().authenticated();
+                .loginPage("/c0322g1")
+                .defaultSuccessUrl("/home").permitAll()
+                .and().authorizeRequests()
+                .antMatchers("/home").permitAll()
+                .antMatchers("/blog").hasAnyRole("USER")
+                .antMatchers("/blog/**").hasAnyRole("ADMIN")
+                .antMatchers("/category/**").hasAnyRole("ADMIN")
+                .anyRequest().authenticated();
     }
 }

@@ -82,23 +82,48 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
-                           href="http://localhost:8080/employee">Employee</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8080/customer">Customer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8080/service">Service</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8080/contract">Contract</a>
-                    </li>
+                    <div class="dropdown">
+                        <button style="color: white" class="btn dropdown-toggle" type="button" id="employ" data-bs-toggle="dropdown" aria-expanded="false">
+                            Employee
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="employ">
+                            <li><a class="dropdown-item" href="http://localhost:8080/employee">List Employee</a></li>
+                            <li><a class="dropdown-item" href="http://localhost:8080/employee/create">Create Employee</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <button style="color: white" class="btn dropdown-toggle" type="button" id="customer" data-bs-toggle="dropdown" aria-expanded="false">
+                            Customer
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="customer">
+                            <li><a class="dropdown-item" href="http://localhost:8080/customer">List Customer</a></li>
+                            <li><a class="dropdown-item" href="http://localhost:8080/customer/create">Create Customer</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button style="color: white" class="btn dropdown-toggle" type="button" id="facility" data-bs-toggle="dropdown" aria-expanded="false">
+                            Facility
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="customer">
+                            <li><a class="dropdown-item" href="http://localhost:8080/facility">List Facility</a></li>
+                            <li><a class="dropdown-item" href="http://localhost:8080/facility/create">Create Facility</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button style="color: white" class="btn dropdown-toggle" type="button" id="contract" data-bs-toggle="dropdown" aria-expanded="false">
+                            Contract
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="customer">
+                            <li><a class="dropdown-item" href="http://localhost:8080/contract">List Contract</a></li>
+                            <li><a class="dropdown-item" href="http://localhost:8080/contract/create">Create Contract</a></li>
+                        </ul>
+                    </div>
+
 
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2" type="search" name="name" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
@@ -176,12 +201,13 @@
             </tr>
             </tbody>
         </table>
-<!--        <center>-->
-<!--            <a th:href="@{'/customer'(page=${customerList.number - 1},name = ${name})}"-->
-<!--               th:if="${customerList.hasPrevious()}">Previous</a>-->
-<!--            <span th:text="${customerList.number + 1}"></span>/<span th:text="${customerList.totalPages}"></span>-->
-<!--            <a th:href="@{'/customer'(page=${customerList.number + 1},name = ${name})}" th:if="${customerList.hasNext()}">Next</a>-->
-<!--        </center>-->
+        <center>
+            <a th:href="@{'/employee'(page=${employeeList.number - 1},name = ${name})}"
+               th:if="${employeeList.hasPrevious()}">Previous</a>
+            <span th:text="${employeeList.number + 1}"></span>/<span th:text="${employeeList.totalPages}"></span>
+            <a th:href="@{'/employee'(page=${employeeList.number + 1},name = ${name})}"
+               th:if="${employeeList.hasNext()}">Next</a>
+        </center>
 
     </div>
     <div class="footer container-fluid">

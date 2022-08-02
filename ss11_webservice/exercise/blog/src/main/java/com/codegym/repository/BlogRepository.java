@@ -13,5 +13,6 @@ public interface BlogRepository extends JpaRepository<Blog, Integer> {
     List<Blog> find(@Param("id_c") int id);
 
 
+    List<Blog> findByNameContaining(String name);
 }
 

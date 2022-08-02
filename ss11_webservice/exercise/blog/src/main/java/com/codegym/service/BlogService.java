@@ -12,4 +12,6 @@ public interface BlogService {
 
     List<Blog> find(int id);
 
+    List<Blog> findByName(String name);
+
 }

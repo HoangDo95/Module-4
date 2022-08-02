@@ -39,7 +39,7 @@ public class ProductController {
 
     @GetMapping("/detail/{id}")
     public ModelAndView showDetail(@PathVariable int id, HttpServletResponse response) {
-        Cookie cookie = new Cookie("idproduct",id + "");
+        Cookie cookie = new Cookie("idProduct",id + "");
         cookie.setMaxAge(1*24*60*60);
         cookie.setPath("/");
         response.addCookie(cookie);

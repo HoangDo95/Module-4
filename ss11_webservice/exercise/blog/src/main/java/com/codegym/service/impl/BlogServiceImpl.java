@@ -30,5 +30,10 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.find(id);
     }
 
+    @Override
+    public List<Blog> findByName(String name) {
+        return blogRepository.findByNameContaining(name);
+    }
+
 
 }

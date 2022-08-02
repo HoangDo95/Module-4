@@ -43,7 +43,7 @@
         </tr>
     </th:block>
 </table>
-<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-3.5.1.min.js"></script>
 <script>
     function addNewSmartPhone() {
         let producer = $('#producer').val();
@@ -61,7 +61,7 @@
             },
             type: "POST",
             data: JSON.stringify(newSmartphone),
-            url: "/smartphones",
+            url: "http://localhost:8080/smartphones",
             success: successHandler
         });
         event.preventDefault();
@@ -70,7 +70,7 @@
     function successHandler() {
         $.ajax({
             type: "GET",
-            url: "/smartphones",
+            url: "http://localhost:8080/smartphones",
             success: function (data) {
                 let content = '    <tr>\n' +
                     '        <td>Producer</td>\n' +
@@ -95,13 +95,13 @@
                 </tr>`;
     }
 
-    $(document).ready(function () {
+    $(document).ready(function (id) {
         $('.deleteSmartphone').click(function (event) {
             let a = $(this);
             let smartphoneId = a.attr("href");
             $.ajax({
                 type: "DELETE",
-                url: `/smartphones/${smartphoneId}`,
+                url: "http://localhost:8080/smartphones/" + id,
                 success: function (data) {
                     a.parent().parent().remove();
                 }

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Đây là trang home</h1>
+<a href="http://localhost:8080/c0322g1">Đăng nhập</a>
+<div sec:authorize="hasAnyRole('USER')">
+    <p>Xin chào :<span sec:authentication="principal.username"></span> <span><a href="http://localhost:8080/logout">Đăng xuất</a></span></p>
+
+    <a href="http://localhost:8080/blog">BLOG LIST</a>
+</div>
+</body>
+</html>
