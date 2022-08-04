@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/styleMenu.css}">
+</head>
+<body>
+<div>
+    <div class="row container-fluid" style="height: 20px; background-color:#4cd7c845"></div>
+    <div class="header container">
+        <div class="row">
+            <div class="col-lg-3">
+                <a href="">
+                    <img src="https://furamavietnam.com/wp-content/uploads/2018/08/logo.png">
+                </a>
+            </div>
+            <div class="col-lg-3">
+
+                <img style="margin-top: 40px"
+                     src="https://smartdata.tonytemplates.com/bestel/wp-content/uploads/2018/05/widget-tripadvisor-logo.png">
+
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-geo-alt" viewBox="0 0 16 16">
+                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        </svg>
+                    </div>
+                    <div class="col-md-10">
+                        <p class="txt-lg">
+                            103 - 105 Vo Nguyen Giap Street, Ngu Hanh Son District, Danang City, Vietnam
+                        </p>
+                        <p>
+                            <span>7.0 km</span>
+                            from Danang Airport
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-telephone" viewBox="0 0 16 16">
+                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                        </svg>
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            84-236-3847 333/888
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-envelope" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                        </svg>
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            reservation@furamavietnam.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark "
+         style="background-color: #046056;position: sticky;top: 0;z-index: 1;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://localhost:8080">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div class="menu">
+                        <ul class="sub-menu">
+<!--                            <li class="item">-->
+<!--                                <a href="http://localhost:8080" class="title">HOME</a>-->
+<!--                            </li>-->
+                            <li class="item">
+                                <a href="#" class="title">EMPLOYEE</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                                <ul class="list-menu">
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/employee" class="title-menu">List Employee</a>
+                                    </li>
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/employee/create" class="title-menu">Create Employee</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="item">
+                                <a href="#" class="title">CUSTOMER</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                                <ul class="list-menu">
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/customer" class="title-menu">List Customer</a>
+                                    </li>
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/customer/create" class="title-menu">Create Customer</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="item">
+                                <a href="#" class="title">FACILITY</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                                <ul class="list-menu">
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/facility" class="title-menu">List Facility</a>
+                                    </li>
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/facility/create" class="title-menu">Create Facility</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="item">
+                                <a href="#" class="title">CONTACT</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                                <ul class="list-menu">
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/contract" class="title-menu">List Contact</a>
+                                    </li>
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/contract/create" class="title-menu">Create Contact</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </ul>
+                <form class="d-flex" th:action="@{/contract}">
+                    <input class="form-control me-2" type="search" placeholder="Search" name="name" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="body_center_2 container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Ngày bắt đầu</th>
+                <th>NGày kết thúc</th>
+                <th>Tiền cọc</th>
+                <th>Mã nhân viên</th>
+                <th>Mã khách hàng</th>
+                <th>Mã dich vụ</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="row : ${contractList}">
+                <td th:text="${row.idCon}"></td>
+                <td th:text="${row.starD}"></td>
+                <td th:text="${row.endD}"></td>
+                <td th:text="${row.deposit}"></td>
+                <td th:text="${row.employee.nameE}"></td>
+                <td th:text="${row.customer.nameC}"></td>
+                <td th:text="${row.facility.nameF}"></td>
+<!--                <td>-->
+<!--                    <a class="btn btn-outline-primary" role="button"-->
+<!--                       th:href="@{/customer/{id}/edit(id=${row.idC})}">Edit</a>-->
+<!--                </td>-->
+                <td>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                            th:data-bs-target="'#cus' + ${row.idCon}">
+                        Danh sách dịch vụ đi kèm
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" th:id="cus + ${row.idCon}" data-bs-backdrop="static"
+                         data-bs-keyboard="false"
+                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Chi tiết</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table table-striped table-bordered">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Cost</th>
+                                            <th>Unit</th>
+                                            <th>Status</th>
+                                            <th>Quantity</th>
+                                        </tr>
+                                        <tr th:each="contractDetail : ${contractDetailList}">
+                                            <th:block th:each="attachFacility : ${attachFacilityList}">
+                                                <th:block
+                                                        th:if="${contractDetail.contract.idCon == row.idCon && contractDetail.attachFacility.idA == attachFacility.idA}">
+                                                    <td th:text="${attachFacility.idA}"></td>
+                                                    <td th:text="${attachFacility.nameA}"></td>
+                                                    <td th:text="${attachFacility.cost}"></td>
+                                                    <td th:text="${attachFacility.unit}"></td>
+                                                    <td th:text="${attachFacility.status}"></td>
+                                                    <td th:text="${contractDetail.quantity}"></td>
+                                                </th:block>
+                                            </th:block>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <center>
+            <a th:href="@{'/contract'(page=${contractList.number - 1})}"
+               th:if="${contractList.hasPrevious()}">Previous</a>
+            <span th:text="${contractList.number + 1}"></span>/<span th:text="${contractList.totalPages}"></span>
+            <a th:href="@{'/contract'(page=${contractList.number + 1})}"
+               th:if="${contractList.hasNext()}">Next</a>
+        </center>
+
+    </div>
+    <div class="footer container-fluid">
+        <!-- Footer -->
+        <footer class="text-center text-lg-start text-break " style="background-color:#1cad85b0">
+            <!-- Section: Social media -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2021 Copyright:
+                <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

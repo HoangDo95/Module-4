@@ -1,4 +1,4 @@
-package com.codegym.case_study.model.Facility;
+package com.codegym.case_study.model.facility;
 
 import javax.persistence.*;
 import java.util.Set;

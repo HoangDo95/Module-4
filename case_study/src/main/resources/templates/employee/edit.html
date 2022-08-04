@@ -13,37 +13,49 @@
     </a>
 </p>
 <div class="container">
-    <form th:action="@{/employee/update}" th:object="${employee}" method="post" novalidate="novalidate">
+    <form th:action="@{/employee/update}" th:object="${employeeDto}" method="post" novalidate="novalidate">
         <div class="mb-3">
-            <input type="text" th:field="*{idE}" class="form-control">
+            <input type="hidden" th:field="*{idE}" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label">Họ và tên</label>
+            <p th:if="${#fields.hasErrors('nameE')}" th:errors="*{nameE}"></p>
             <input type="text" th:field="*{nameE}" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label">Ngày sinh</label>
+            <p th:if="${#fields.hasErrors('birthDayE')}" th:errors="*{birthDayE}"></p>
+
             <input type="date" th:field="*{birthDayE}" class="form-control">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Số CMND</label>
+            <p th:if="${#fields.hasErrors('idCardE')}" th:errors="*{idCardE}"></p>
             <input type="number" th:field="*{idCardE}" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label">Lương</label>
+            <p th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></p>
+
             <input type="number" th:field="*{salary}" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label">Số ĐT</label>
+            <p th:if="${#fields.hasErrors('phoneE')}" th:errors="*{phoneE}"></p>
+
             <input type="number" th:field="*{phoneE}" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label">Email</label>
+            <p th:if="${#fields.hasErrors('emailE')}" th:errors="*{emailE}"></p>
+
             <input type="text" th:field="*{emailE}" class="form-control">
         </div>
         <div class="mb-3">
             <label class="form-label">Địa chỉ</label>
+            <p th:if="${#fields.hasErrors('addressE')}" th:errors="*{addressE}"></p>
+
             <input type="text" th:field="*{addressE}" class="form-control">
         </div>
         <div class="mb-3">

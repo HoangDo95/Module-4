@@ -14,7 +14,7 @@
     </a>
 </p>
 <div class="container">
-    <form th:action="@{/facility/save}" th:object="${facility}" method="post" novalidate="novalidate">
+    <form th:action="@{/facility/save}" th:object="${facilityDto}" method="post" novalidate="novalidate">
         <div class="mb-3">
             <input type="hidden" th:field="*{idF}" class="form-control">
         </div>
@@ -88,7 +88,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     function onchangeFacility(value) {
-        debugger
         if (value == 1) {
             $("#standardRoom").show();
             $("#other").show();

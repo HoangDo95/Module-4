@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="stylesheet" th:href="@{/styleMenu.css}">
 </head>
 <body>
 <div>
@@ -83,53 +84,101 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <div class="dropdown">
-                        <button style="color: white" class="btn dropdown-toggle" type="button" id="employ" data-bs-toggle="dropdown" aria-expanded="false">
-                            Employee
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="employ">
-                            <li><a class="dropdown-item" href="http://localhost:8080/employee">List Employee</a></li>
-                            <li><a class="dropdown-item" href="http://localhost:8080/employee/create">Create Employee</a></li>
+                    <div class="menu">
+                        <ul class="sub-menu">
+                            <!--                            <li class="item">-->
+                            <!--                                <a href="http://localhost:8080" class="title">HOME</a>-->
+                            <!--                            </li>-->
+                            <li class="item" sec:authorize="hasRole('USER')">
+                                <a href="#" class="title">EMPLOYEE</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                     class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                                <ul class="list-menu">
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/employee" class="title-menu">List Employee</a>
+                                    </li>
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/employee/create" class="title-menu">Create
+                                            Employee</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="item" sec:authorize="hasRole('ADMIN')">
+                                <a href="#" class="title">CUSTOMER</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                     class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                                <ul class="list-menu">
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/customer" class="title-menu">List Customer</a>
+                                    </li>
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/customer/create" class="title-menu">Create
+                                            Customer</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="item" sec:authorize="hasRole('ADMIN')">
+                                <a href="#" class="title">FACILITY</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                     class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                                <ul class="list-menu">
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/facility" class="title-menu">List Facility</a>
+                                    </li>
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/facility/create" class="title-menu">Create
+                                            Facility</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="item" sec:authorize="hasRole('ADMIN')">
+                                <a href="#" class="title">CONTACT</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                     class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                                <ul class="list-menu">
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/contract" class="title-menu">List Contact</a>
+                                    </li>
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/contract/create" class="title-menu">Create
+                                            Contact</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <div>
+                                <form class="d-flex" th:action="@{/customer}">
+                                    <input class="form-control me-2" type="search" placeholder="Search" name="name"
+                                           aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                            </div>
                         </ul>
                     </div>
-
-                    <div class="dropdown">
-                        <button style="color: white" class="btn dropdown-toggle" type="button" id="customer" data-bs-toggle="dropdown" aria-expanded="false">
-                            Customer
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="customer">
-                            <li><a class="dropdown-item" href="http://localhost:8080/customer">List Customer</a></li>
-                            <li><a class="dropdown-item" href="http://localhost:8080/customer/create">Create Customer</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <button style="color: white" class="btn dropdown-toggle" type="button" id="facility" data-bs-toggle="dropdown" aria-expanded="false">
-                            Facility
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="customer">
-                            <li><a class="dropdown-item" href="http://localhost:8080/facility">List Facility</a></li>
-                            <li><a class="dropdown-item" href="http://localhost:8080/facility/create">Create Facility</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <button style="color: white" class="btn dropdown-toggle" type="button" id="contract" data-bs-toggle="dropdown" aria-expanded="false">
-                            Contract
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="customer">
-                            <li><a class="dropdown-item" href="http://localhost:8080/contract">List Contract</a></li>
-                            <li><a class="dropdown-item" href="http://localhost:8080/contract/create">Create Contract</a></li>
-                        </ul>
-                    </div>
-
                 </ul>
-                <form class="d-flex" th:action="@{/customer}">
-                    <input class="form-control me-2" type="search" placeholder="Search" name="name" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <div>
+                    <div sec:authorize="isAnonymous()">
+                        <a class="btn btn-outline-primary" role="button"
+                           th:href="@{/login}">Đăng nhập</a>
+                    </div>
+                    <div sec:authorize="isAuthenticated()">
+                        <p style="color: white">Xin chào :<span sec:authentication="principal.username"></span>
+                            <span><a class="btn btn-outline-primary" role="button"
+                                     th:href="@{/logout}">Đăng xuất</a></span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </nav>
-    <div class="body_center_2 container">
+    <div class="body_center_2 container" sec:authorize="isAuthenticated()">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -182,7 +231,8 @@
                                             aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Do you want delete product <span class="text-info" th:text="${row.nameC}"></span>
+                                    Do you want delete product <span class="text-info"
+                                                                     th:text="${row.nameC}"></span>
                                     with id = <span class="text-info" th:text="${row.idC}"></span>
                                 </div>
                                 <div class="modal-footer">
@@ -205,8 +255,8 @@
             <a th:href="@{'/customer'(page=${customerList.number + 1},name = ${name})}"
                th:if="${customerList.hasNext()}">Next</a>
         </center>
-
     </div>
+
     <div class="footer container-fluid">
         <!-- Footer -->
         <footer class="text-center text-lg-start text-break " style="background-color:#1cad85b0">

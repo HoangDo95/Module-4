@@ -1,6 +1,6 @@
 package com.codegym.case_study.service.facility;
 
-import com.codegym.case_study.model.Facility.FacilityType;
+import com.codegym.case_study.model.facility.FacilityType;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.codegym.case_study.service.facility.impl;
 
-import com.codegym.case_study.model.Facility.FacilityType;
+import com.codegym.case_study.model.facility.FacilityType;
 import com.codegym.case_study.repository.faciliry.FacilityTypeRepository;
 import com.codegym.case_study.service.facility.FacilityTypeService;
 import org.springframework.beans.factory.annotation.Autowired;

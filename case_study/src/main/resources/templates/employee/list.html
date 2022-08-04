@@ -1,9 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="stylesheet" th:href="@{/styleMenu.css}">
 </head>
 <body>
 <div>
@@ -74,7 +76,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark "
          style="background-color: #046056;position: sticky;top: 0;z-index: 1;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="http://localhost:8080/home">Home</a>
+            <a class="navbar-brand" href="http://localhost:8080">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -82,50 +84,97 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <div class="dropdown">
-                        <button style="color: white" class="btn dropdown-toggle" type="button" id="employ" data-bs-toggle="dropdown" aria-expanded="false">
-                            Employee
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="employ">
-                            <li><a class="dropdown-item" href="http://localhost:8080/employee">List Employee</a></li>
-                            <li><a class="dropdown-item" href="http://localhost:8080/employee/create">Create Employee</a></li>
+                    <div class="menu">
+                        <ul class="sub-menu">
+                            <!--                            <li class="item">-->
+                            <!--                                <a href="http://localhost:8080" class="title">HOME</a>-->
+                            <!--                            </li>-->
+                            <li class="item" sec:authorize="hasRole('USER')">
+                                <a href="#" class="title">EMPLOYEE</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                     class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                                <ul class="list-menu">
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/employee" class="title-menu">List Employee</a>
+                                    </li>
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/employee/create" class="title-menu">Create
+                                            Employee</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="item" sec:authorize="hasRole('ADMIN')">
+                                <a href="#" class="title">CUSTOMER</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                     class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                                <ul class="list-menu">
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/customer" class="title-menu">List Customer</a>
+                                    </li>
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/customer/create" class="title-menu">Create
+                                            Customer</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="item" sec:authorize="hasRole('ADMIN')">
+                                <a href="#" class="title">FACILITY</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                     class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                                <ul class="list-menu">
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/facility" class="title-menu">List Facility</a>
+                                    </li>
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/facility/create" class="title-menu">Create
+                                            Facility</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="item" sec:authorize="hasRole('ADMIN')">
+                                <a href="#" class="title">CONTACT</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                                     class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                                <ul class="list-menu">
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/contract" class="title-menu">List Contact</a>
+                                    </li>
+                                    <li class="item-menu">
+                                        <a href="http://localhost:8080/contract/create" class="title-menu">Create
+                                            Contact</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <div>
+                                <form class="d-flex" th:action="@{/customer}">
+                                    <input class="form-control me-2" type="search" placeholder="Search" name="name"
+                                           aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                            </div>
                         </ul>
                     </div>
-
-                    <div class="dropdown">
-                        <button style="color: white" class="btn dropdown-toggle" type="button" id="customer" data-bs-toggle="dropdown" aria-expanded="false">
-                            Customer
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="customer">
-                            <li><a class="dropdown-item" href="http://localhost:8080/customer">List Customer</a></li>
-                            <li><a class="dropdown-item" href="http://localhost:8080/customer/create">Create Customer</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <button style="color: white" class="btn dropdown-toggle" type="button" id="facility" data-bs-toggle="dropdown" aria-expanded="false">
-                            Facility
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="customer">
-                            <li><a class="dropdown-item" href="http://localhost:8080/facility">List Facility</a></li>
-                            <li><a class="dropdown-item" href="http://localhost:8080/facility/create">Create Facility</a></li>
-                        </ul>
-                    </div>
-                    <div class="dropdown">
-                        <button style="color: white" class="btn dropdown-toggle" type="button" id="contract" data-bs-toggle="dropdown" aria-expanded="false">
-                            Contract
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="customer">
-                            <li><a class="dropdown-item" href="http://localhost:8080/contract">List Contract</a></li>
-                            <li><a class="dropdown-item" href="http://localhost:8080/contract/create">Create Contract</a></li>
-                        </ul>
-                    </div>
-
-
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" name="name" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <div>
+                    <div sec:authorize="isAnonymous()">
+                        <a class="btn btn-outline-primary" role="button"
+                           th:href="@{/login}">Đăng nhập</a>
+                    </div>
+                    <div sec:authorize="isAuthenticated()">
+                        <p style="color: white">Xin chào :<span sec:authentication="principal.username"></span>
+                            <span><a class="btn btn-outline-primary" role="button"
+                                     th:href="@{/logout}">Đăng xuất</a></span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </nav>
@@ -133,71 +182,82 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>STT</th>
-                <th>Họ và tên</th>
-                <th>Ngày sinh</th>
-                <th>Số CMND</th>
-                <th>Lương</th>
-                <th>Số ĐT</th>
-                <th>Email</th>
-                <th>Địa chỉ</th>
-                <th>Vị trí </th>
-                <th>Trình độ </th>
-                <th>Bộ phận </th>
-                <!--            <th>User </th>-->
-                <th>Edit</th>
-                <th>Delete</th>
+                <div sec:authorize="hasRole('USER')">
+                    <th>STT</th>
+                    <th>Họ và tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Số CMND</th>
+                    <th>Lương</th>
+                    <th>Số ĐT</th>
+                    <th>Email</th>
+                    <th>Địa chỉ</th>
+                    <th>Vị trí</th>
+                    <th>Trình độ</th>
+                    <th>Bộ phận</th>
+                    <th>User</th>
+                </div>
+                <div sec:authorize="hasRole('ADMIN')">
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </div>
             </tr>
             </thead>
             <tbody>
             <tr th:each="row : ${employeeList}">
-                <td th:text="${row.idE}"></td>
-                <td th:text="${row.nameE}"></td>
-                <td th:text="${row.birthDayE}"></td>
-                <td th:text="${row.idCardE}"></td>
-                <td th:text="${row.salary}"></td>
-                <td th:text="${row.phoneE}"></td>
-                <td th:text="${row.emailE}"></td>
-                <td th:text="${row.addressE}"></td>
-                <td th:text="${row.position.nameP}"></td>
-                <td th:text="${row.educationDegree.nameED}"></td>
-                <td th:text="${row.division.nameD}"></td>
-                <!--            <td th:text="${row.user}"></td>-->
-                <td>
-                    <button class="btn btn-outline-danger">
-                        <a style="text-decoration: none"
-                           th:href="@{/employee/{id}/edit(id=${row.idE})}">Edit</a></button>
-                </td>
-                <td>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                            th:data-bs-target="'#cus' + ${row.idE}">
-                        Delete
-                    </button>
+                <div sec:authorize="hasRole('USER')">
+                    <td th:text="${row.idE}"></td>
+                    <td th:text="${row.nameE}"></td>
+                    <td th:text="${row.birthDayE}"></td>
+                    <td th:text="${row.idCardE}"></td>
+                    <td th:text="${row.salary}"></td>
+                    <td th:text="${row.phoneE}"></td>
+                    <td th:text="${row.emailE}"></td>
+                    <td th:text="${row.addressE}"></td>
+                    <td th:text="${row.position.nameP}"></td>
+                    <td th:text="${row.educationDegree.nameED}"></td>
+                    <td th:text="${row.division.nameD}"></td>
+                    <td th:text="${row.user.username}"></td>
+                </div>
+                <div sec:authorize="hasRole('ADMIN')">
+                    <td>
+                        <a class="btn btn-outline-primary" role="button"
+                           th:href="@{/employee/{id}/edit(id=${row.idE})}">Edit</a>
+                    </td>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                                th:data-bs-target="'#cus' + ${row.idE}">
+                            Delete
+                        </button>
 
-                    <!-- Modal -->
-                    <div class="modal fade" th:id="cus + ${row.idE}" data-bs-backdrop="static"
-                         data-bs-keyboard="false"
-                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Do you want delete product <span class="text-info" th:text="${row.nameE}"></span>
-                                    with id = <span class="text-info" th:text="${row.idE}"></span>
-                                </div>
-                                <div class="modal-footer">
-                                    <a th:href="@{/employee/delete(id=${row.idE})}" class="btn btn-outline-success">Delete</a>
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <!-- Modal -->
+                        <div class="modal fade" th:id="cus + ${row.idE}" data-bs-backdrop="static"
+                             data-bs-keyboard="false"
+                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Do you want delete product <span class="text-info"
+                                                                         th:text="${row.nameE}"></span>
+                                        with id = <span class="text-info" th:text="${row.idE}"></span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a th:href="@{/employee/delete(id=${row.idE})}" class="btn btn-outline-success">Delete</a>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </td>
+                    </td>
+                </div>
+
+
             </tr>
             </tbody>
         </table>

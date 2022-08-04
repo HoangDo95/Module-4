@@ -31,9 +31,9 @@ public class Employee {
     @JoinColumn(name = "id_d", referencedColumnName = "idD")
     private Division division;
 
-//    @ManyToOne
-//    @JoinColumn(name = "username", referencedColumnName = "username")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "username", referencedColumnName = "username")
+    private User user;
 
     @OneToMany(mappedBy = "employee")
     private Set<Contract> contractSet;
@@ -41,7 +41,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int idE, String nameE, String birthDayE, String idCardE, double salary, String phoneE, String emailE, String addressE, Position position, EducationDegree educationDegree, Division division, Set<Contract> contractSet) {
+    public Employee(int idE, String nameE, String birthDayE, String idCardE, double salary, String phoneE, String emailE, String addressE, Position position, EducationDegree educationDegree, Division division, User user, Set<Contract> contractSet) {
         this.idE = idE;
         this.nameE = nameE;
         this.birthDayE = birthDayE;
@@ -53,33 +53,9 @@ public class Employee {
         this.position = position;
         this.educationDegree = educationDegree;
         this.division = division;
-//        this.user = user;
+        this.user = user;
         this.contractSet = contractSet;
     }
-
-    public String getAddressE() {
-        return addressE;
-    }
-
-    public void setAddressE(String addressE) {
-        this.addressE = addressE;
-    }
-
-    public Set<Contract> getContractSet() {
-        return contractSet;
-    }
-
-    public void setContractSet(Set<Contract> contractSet) {
-        this.contractSet = contractSet;
-    }
-
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 
     public int getIdE() {
         return idE;
@@ -137,6 +113,14 @@ public class Employee {
         this.emailE = emailE;
     }
 
+    public String getAddressE() {
+        return addressE;
+    }
+
+    public void setAddressE(String addressE) {
+        this.addressE = addressE;
+    }
+
     public Position getPosition() {
         return position;
     }
@@ -161,5 +145,19 @@ public class Employee {
         this.division = division;
     }
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<Contract> getContractSet() {
+        return contractSet;
+    }
+
+    public void setContractSet(Set<Contract> contractSet) {
+        this.contractSet = contractSet;
+    }
 }

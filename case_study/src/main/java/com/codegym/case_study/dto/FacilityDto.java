@@ -1,41 +1,49 @@
-package com.codegym.case_study.model.Facility;
+package com.codegym.case_study.dto;
 
-import com.codegym.case_study.model.contract.Contract;
+import com.codegym.case_study.model.facility.FacilityType;
+import com.codegym.case_study.model.facility.RentType;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-@Entity
-public class Facility {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class FacilityDto {
     private int idF;
+
+    @NotBlank(message = "Không được để trống")
     private String nameF;
+
+    @NotNull(message = "Không được để trống")
     private int area;
+
+    @NotNull(message = "Không được để trống")
     private double cost;
+
+    @NotNull(message = "Không được để trống")
     private int maxPeople;
 
-    @ManyToOne
-    @JoinColumn(name = "id_rt",referencedColumnName = "idRT")
     private RentType rentType;
 
-    @ManyToOne
-    @JoinColumn(name = "id_ft",referencedColumnName = "idFT")
     private FacilityType facilityType;
 
+    @NotBlank(message = "Không được để trống")
     private String standardRoom;
+
+    @NotBlank(message = "Không được để trống")
     private String other;
+
+    @NotNull(message = "Không được để trống")
     private double poolArea;
+
+    @NotNull(message = "Không được để trống")
     private int floors;
+
+    @NotBlank(message = "Không được để trống")
     private String freeF;
 
-    @OneToMany(mappedBy = "facility")
-    private Set<Contract> contractSet;
-
-    public Facility() {
+    public FacilityDto() {
     }
 
-    public Facility(int idF, String nameF, int area, double cost, int maxPeople, RentType rentType, FacilityType facilityType, String standardRoom, String other, double poolArea, int floors, String freeF) {
+    public FacilityDto(int idF, String nameF, int area, double cost, int maxPeople, RentType rentType, FacilityType facilityType, String standardRoom, String other, double poolArea, int floors, String freeF) {
         this.idF = idF;
         this.nameF = nameF;
         this.area = area;

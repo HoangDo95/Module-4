@@ -13,25 +13,34 @@
     </a>
 </p>
 <div class="container">
-    <form th:action="@{/customer/update}" th:object="${customer}" method="post" novalidate="novalidate">
+    <form th:action="@{/customer/update}" th:object="${customerDto}" method="post" novalidate="novalidate">
         <div class="mb-3">
             <input type="hidden" th:field="*{idC}" class="form-control">
         </div>
         <div class="mb-3">
+            <label class="form-label">Loại khách </label>
             <select class="form-select" th:field="*{customerType}">
+                <!--                <p th:if="${#fields.hasErrors('customerType')}" th:errors="*{customerType}"></p>-->
                 <option th:each="item : ${customerTypeList}"
                         th:value="${item.idCT}" th:text="${item.nameCT}"></option>
+
             </select>
         </div>
         <div class="mb-3">
             <label class="form-label">Name</label>
+
             <input type="text" th:field="*{nameC}" class="form-control">
+            <p th:if="${#fields.hasErrors('nameC')}" th:errors="*{nameC}"></p>
         </div>
         <div class="mb-3">
             <label class="form-label">Birth day</label>
+
             <input type="date" th:field="*{birthDayC}" class="form-control">
+            <p th:if="${#fields.hasErrors('birthDayC')}" th:errors="*{birthDayC}"></p>
         </div>
         <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <!--            <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>-->
             <div class="form-check">
                 <input class="form-check-input" type="radio" th:field="*{gender}" value="0">
                 <label class="form-check-label"> Female </label>
@@ -47,21 +56,27 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Id Card</label>
+
             <input type="number" th:field="*{idCardC}" class="form-control">
+            <p th:if="${#fields.hasErrors('idCardC')}" th:errors="*{idCardC}"></p>
         </div>
         <div class="mb-3">
             <label class="form-label">Phone</label>
+
             <input type="number" th:field="*{phoneC}" class="form-control">
+            <p th:if="${#fields.hasErrors('phoneC')}" th:errors="*{phoneC}"></p>
         </div>
         <div class="mb-3">
             <label class="form-label">Email</label>
+
             <input type="text" th:field="*{email}" class="form-control">
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
         </div>
         <div class="mb-3">
             <label class="form-label">Address</label>
             <input type="text" th:field="*{address}" class="form-control">
+            <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
         </div>
-
         <input type="submit" value="Save"/>
     </form>
 </div>

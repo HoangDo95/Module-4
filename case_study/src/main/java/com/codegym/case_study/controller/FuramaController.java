@@ -8,9 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("")
 public class FuramaController {
 
-    @GetMapping("")
+    @GetMapping({"", "/home"})
     public String showHome(){
         return "/home";
+    }
+
+    @GetMapping("/login")
+    public String showLogin(){
+        return "/myLogin";
+    }
+
+    @GetMapping("/403")
+    public String showError(){
+        return "/error";
     }
 
 }

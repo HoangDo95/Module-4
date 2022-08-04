@@ -1,6 +1,6 @@
 package com.codegym.case_study.repository.faciliry;
 
-import com.codegym.case_study.model.Facility.Facility;
+import com.codegym.case_study.model.facility.Facility;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
