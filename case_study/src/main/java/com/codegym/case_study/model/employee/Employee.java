@@ -57,6 +57,19 @@ public class Employee {
         this.contractSet = contractSet;
     }
 
+    public Employee(String nameE, String birthDayE, String idCardE, double salary, String phoneE, String emailE, String addressE, Position position, EducationDegree educationDegree, Division division) {
+        this.nameE = nameE;
+        this.birthDayE = birthDayE;
+        this.idCardE = idCardE;
+        this.salary = salary;
+        this.phoneE = phoneE;
+        this.emailE = emailE;
+        this.addressE = addressE;
+        this.position = position;
+        this.educationDegree = educationDegree;
+        this.division = division;
+    }
+
     public int getIdE() {
         return idE;
     }

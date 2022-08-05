@@ -100,7 +100,7 @@
                                         <a href="http://localhost:8080/employee" class="title-menu">List Employee</a>
                                     </li>
                                     <li class="item-menu">
-                                        <a href="http://localhost:8080/employee/create" class="title-menu">Create
+                                        <a class="title-menu" data-bs-toggle="modal" data-bs-target="#modal">Create
                                             Employee</a>
                                     </li>
                                 </ul>
@@ -203,9 +203,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="row : ${employeeList}">
+            <tr th:each="row,c : ${employeeList}">
                 <div sec:authorize="hasRole('USER')">
-                    <td th:text="${row.idE}"></td>
+                    <td th:text="${c.count} + 2 * ${employeeList.number}"></td>
                     <td th:text="${row.nameE}"></td>
                     <td th:text="${row.birthDayE}"></td>
                     <td th:text="${row.idCardE}"></td>
@@ -216,13 +216,19 @@
                     <td th:text="${row.position.nameP}"></td>
                     <td th:text="${row.educationDegree.nameED}"></td>
                     <td th:text="${row.division.nameD}"></td>
-                    <td th:text="${row.user.username}"></td>
+<!--                    <td th:text="${row.user.username == null ? '' : row.user.username}"></td>-->
                 </div>
                 <div sec:authorize="hasRole('ADMIN')">
+                    <!--                                        <td>-->
+                    <!--                                            <a class="btn btn-outline-primary" role="button"  th:href="@{/employee/{id}/edit(id=${row.idE})}">Edit</a>-->
+                    <!--                                        </td>-->
                     <td>
-                        <a class="btn btn-outline-primary" role="button"
-                           th:href="@{/employee/{id}/edit(id=${row.idE})}">Edit</a>
+                        <!-- Button trigger modal -->
+                        <a class="btn btn-outline-danger" th:href="@{/employee/update/{id} (id = ${row.idE})}">
+                            Edit
+                        </a>
                     </td>
+                    <!-- Xóa modal -->
                     <td>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
@@ -235,7 +241,9 @@
                              data-bs-keyboard="false"
                              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
+
                                 <div class="modal-content">
+
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -255,10 +263,93 @@
                             </div>
                         </div>
                     </td>
-                </div>
-
+            </tr>
 
             </tr>
+
+            <div sec:authorize="hasRole('ADMIN')">
+                <!-- Button trigger modal -->
+                <!--                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"-->
+                <!--                                th:data-bs-target="'#employee' + ${row.idE}">-->
+                <!--                            Danh sách dịch vụ đi kèm-->
+                <!--                        </button>-->
+
+                <!-- Modal -->
+                <div class="modal fade" data-bs-backdrop="static"
+                     data-bs-keyboard="false"
+                     tabindex="-1" id="modal" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form th:action="@{/employee/save}" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel1">Create Employee</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <label>Họ tên</label>
+                                        <input type="text" name="name"/>
+                                    </div>
+                                    <div>
+                                        <label>Ngày sinh</label>
+                                        <input type="date" name="birthDay"/>
+                                    </div>
+                                    <div>
+                                        <label>CMND</label>
+                                        <input type="number" name="idCard"/>
+                                    </div>
+                                    <div>
+                                        <label>Tiền lương</label>
+                                        <input type="number" name="salary"/>
+                                    </div>
+                                    <div>
+                                        <label>Số điện thoại</label>
+                                        <input type="number" name="phone"/>
+                                    </div>
+                                    <div>
+                                        <label>Email</label>
+                                        <input type="email" name="email"/>
+                                    </div>
+                                    <div>
+                                        <label>Địa chỉ</label>
+                                        <input type="text" name="address"/>
+                                    </div>
+                                    <div>
+                                        <label>Vị trí</label>
+                                        <select name="position">
+                                            <option th:each="item : ${positionList}"
+                                                    th:value="${item.idP}" th:text="${item.nameP}"></option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label>Bằng cấp</label>
+                                        <select name="education">
+                                            <option th:each="item : ${educationDegreeList}"
+                                                    th:value="${item.idED}" th:text="${item.nameED}"></option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label>Bộ phận</label>
+                                        <select name="division">
+                                            <option th:each="item : ${divisionList}"
+                                                    th:value="${item.idD}" th:text="${item.nameD}"></option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Create
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             </tbody>
         </table>
         <center>
@@ -284,8 +375,107 @@
     </div>
 
 </div>
+
+<!-- Modal Edit-->
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form th:action="@{/employee/update}" method="post" th:object="${employeeDto}">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel2">Create Employee</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <label>Stt</label>
+                                <input type="text" readonly name="idE" th:field="*{idE}"/>
+                            </div>
+                            <div>
+                                <label>Họ tên</label>
+                                <input type="text" name="name" th:field="*{nameE}"/>
+                            </div>
+                            <div>
+                                <label>Ngày sinh</label>
+                                <input type="date" name="birthDay" th:field="*{birthDayE}"/>
+                            </div>
+                            <div>
+                                <label>CMND</label>
+                                <input type="number" name="idCard" th:field="*{idCardE}"/>
+                            </div>
+                            <div>
+                                <label>Tiền lương</label>
+                                <input type="number" name="salary" th:field="*{salary}"/>
+                            </div>
+                            <div>
+                                <label>Số điện thoại</label>
+                                <input type="number" name="phone" th:field="*{phoneE}"/>
+                            </div>
+                            <div>
+                                <label>Email</label>
+                                <input type="email" name="email" th:field="*{emailE}"/>
+                            </div>
+                            <div>
+                                <label>Địa chỉ</label>
+                                <input type="text" name="address" th:field="*{addressE}"/>
+                            </div>
+                            <div>
+                                <label>Vị trí</label>
+                                <select name="position" th:field="*{position}">
+                                    <option th:each="item : ${positionList}"
+                                            th:value="${item.idP}" th:text="${item.nameP}"></option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Bằng cấp</label>
+                                <select name="education" th:field="*{educationDegree}">
+                                    <option th:each="item : ${educationDegreeList}"
+                                            th:value="${item.idED}" th:text="${item.nameED}"></option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>Bộ phận</label>
+                                <select name="division" th:field="*{division}">
+                                    <option th:each="item : ${divisionList}"
+                                            th:value="${item.idD}" th:text="${item.nameD}"></option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<input type="text" hidden th:value="${flag}" id="flag">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    let flag = $("#flag").val();
+    if (flag == 1) {
+        $(document).ready(function () {
+            $("#exampleModal").modal("show");
+        })
+    }
+</script>
 </body>
 </html>

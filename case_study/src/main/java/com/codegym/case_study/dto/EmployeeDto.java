@@ -11,25 +11,25 @@ import javax.validation.constraints.NotNull;
 public class EmployeeDto {
     private int idE;
 
-    @NotBlank(message = "Không được để trống")
+//    @NotBlank(message = "Không được để trống")
     private String nameE;
 
-    @NotBlank(message = "Không được để trống")
+//    @NotBlank(message = "Không được để trống")
     private String birthDayE;
 
-    @NotBlank(message = "Không được để trống")
+//    @NotBlank(message = "Không được để trống")
     private String idCardE;
 
-    @NotNull(message = "Không được để trống")
+//    @NotNull(message = "Không được để trống")
     private double salary;
 
-    @NotBlank(message = "Không được để trống")
+//    @NotBlank(message = "Không được để trống")
     private String phoneE;
 
-    @NotBlank(message = "Không được để trống")
+//    @NotBlank(message = "Không được để trống")
     private String emailE;
 
-    @NotBlank(message = "Không được để trống")
+//    @NotBlank(message = "Không được để trống")
     private String addressE;
 
     private Position position;
