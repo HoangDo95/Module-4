@@ -5,24 +5,29 @@ import com.codegym.case_study.model.facility.RentType;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 public class FacilityDto {
     private int idF;
 
     @NotBlank(message = "Không được để trống")
+    @Pattern(message = "Sai định dạng (VD: Nguyễn Văn A)", regexp = "^([A-Z\\p{L}]{1}[a-z\\p{L}]*)+(\\s([A-Z\\p{L}]{1}[a-z\\p{L}]*))*$")
     private String nameF;
 
     @NotNull(message = "Không được để trống")
     private int area;
 
     @NotNull(message = "Không được để trống")
+    @Pattern(message = "Phải nhập số và lớn hơn 0",regexp = "[1-9]+\\d*")
     private double cost;
 
     @NotNull(message = "Không được để trống")
     private int maxPeople;
 
+    @NotBlank(message = "Không được để trống")
     private RentType rentType;
 
+    @NotBlank(message = "Không được để trống")
     private FacilityType facilityType;
 
     @NotBlank(message = "Không được để trống")
@@ -32,9 +37,11 @@ public class FacilityDto {
     private String other;
 
     @NotNull(message = "Không được để trống")
+    @Pattern(message = "Phải nhập số và lớn hơn 0",regexp = "[1-9]+\\d*")
     private double poolArea;
 
     @NotNull(message = "Không được để trống")
+    @Pattern(message = "Phải nhập số và lớn hơn 0",regexp = "[1-9]+\\d*")
     private int floors;
 
     @NotBlank(message = "Không được để trống")

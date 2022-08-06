@@ -216,7 +216,7 @@
                     <td th:text="${row.position.nameP}"></td>
                     <td th:text="${row.educationDegree.nameED}"></td>
                     <td th:text="${row.division.nameD}"></td>
-<!--                    <td th:text="${row.user.username == null ? '' : row.user.username}"></td>-->
+                    <!--                    <td th:text="${row.user.username == null ? '' : row.user.username}"></td>-->
                 </div>
                 <div sec:authorize="hasRole('ADMIN')">
                     <!--                                        <td>-->
@@ -224,7 +224,7 @@
                     <!--                                        </td>-->
                     <td>
                         <!-- Button trigger modal -->
-                        <a class="btn btn-outline-danger" th:href="@{/employee/update/{id} (id = ${row.idE})}">
+                        <a class="btn btn-outline-primary" role="button" th:href="@{/employee/update/{id} (id = ${row.idE})}">
                             Edit
                         </a>
                     </td>
@@ -263,6 +263,7 @@
                             </div>
                         </div>
                     </td>
+                </div>
             </tr>
 
             </tr>
@@ -317,7 +318,7 @@
                                     </div>
                                     <div>
                                         <label>Vị trí</label>
-                                        <select name="position">
+                                        <select name="position" >
                                             <option th:each="item : ${positionList}"
                                                     th:value="${item.idP}" th:text="${item.nameP}"></option>
                                         </select>
@@ -362,16 +363,12 @@
 
     </div>
     <div class="footer container-fluid">
-        <!-- Footer -->
         <footer class="text-center text-lg-start text-break " style="background-color:#1cad85b0">
-            <!-- Section: Social media -->
             <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
                 © 2021 Copyright:
                 <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
             </div>
-            <!-- Copyright -->
         </footer>
-        <!-- Footer -->
     </div>
 
 </div>
@@ -384,73 +381,69 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="staticBackdropLabel2">Create Employee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form th:action="@{/employee/update}" method="post" th:object="${employeeDto}">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel2">Create Employee</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div>
-                                <label>Stt</label>
-                                <input type="text" readonly name="idE" th:field="*{idE}"/>
-                            </div>
-                            <div>
-                                <label>Họ tên</label>
-                                <input type="text" name="name" th:field="*{nameE}"/>
-                            </div>
-                            <div>
-                                <label>Ngày sinh</label>
-                                <input type="date" name="birthDay" th:field="*{birthDayE}"/>
-                            </div>
-                            <div>
-                                <label>CMND</label>
-                                <input type="number" name="idCard" th:field="*{idCardE}"/>
-                            </div>
-                            <div>
-                                <label>Tiền lương</label>
-                                <input type="number" name="salary" th:field="*{salary}"/>
-                            </div>
-                            <div>
-                                <label>Số điện thoại</label>
-                                <input type="number" name="phone" th:field="*{phoneE}"/>
-                            </div>
-                            <div>
-                                <label>Email</label>
-                                <input type="email" name="email" th:field="*{emailE}"/>
-                            </div>
-                            <div>
-                                <label>Địa chỉ</label>
-                                <input type="text" name="address" th:field="*{addressE}"/>
-                            </div>
-                            <div>
-                                <label>Vị trí</label>
-                                <select name="position" th:field="*{position}">
-                                    <option th:each="item : ${positionList}"
-                                            th:value="${item.idP}" th:text="${item.nameP}"></option>
-                                </select>
-                            </div>
-                            <div>
-                                <label>Bằng cấp</label>
-                                <select name="education" th:field="*{educationDegree}">
-                                    <option th:each="item : ${educationDegreeList}"
-                                            th:value="${item.idED}" th:text="${item.nameED}"></option>
-                                </select>
-                            </div>
-                            <div>
-                                <label>Bộ phận</label>
-                                <select name="division" th:field="*{division}">
-                                    <option th:each="item : ${divisionList}"
-                                            th:value="${item.idD}" th:text="${item.nameD}"></option>
-                                </select>
-                            </div>
+                    <div class="mb-3">
+                        <input type="hidden" th:field="*{idE}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Họ và tên</label>
+                        <input type="text" th:field="*{nameE}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ngày sinh</label>
 
-                        </div>
+                        <input type="date" th:field="*{birthDayE}" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Số CMND</label>
+                        <input type="number" th:field="*{idCardE}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Lương</label>
+
+                        <input type="number" th:field="*{salary}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Số ĐT</label>
+
+                        <input type="number" th:field="*{phoneE}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+
+                        <input type="text" th:field="*{emailE}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Địa chỉ</label>
+
+                        <input type="text" th:field="*{addressE}" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Vị trí</label>
+                        <select class="form-select" th:field="*{position}">
+                            <option th:each="item : ${positionList}"
+                                    th:value="${item.idP}" th:text="${item.nameP}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Trình độ</label>
+                        <select class="form-select" th:field="*{educationDegree}">
+                            <option th:each="item : ${educationDegreeList}"
+                                    th:value="${item.idED}" th:text="${item.nameED}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Bộ phận</label>
+                        <select class="form-select" th:field="*{division}">
+                            <option th:each="item : ${divisionList}"
+                                    th:value="${item.idD}" th:text="${item.nameD}"></option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -458,7 +451,6 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>

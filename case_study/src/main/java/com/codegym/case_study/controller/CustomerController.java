@@ -2,8 +2,8 @@ package com.codegym.case_study.controller;
 
 import com.codegym.case_study.dto.CustomerDto;
 import com.codegym.case_study.model.customer.Customer;
-import com.codegym.case_study.service.customer.CustomerService;
-import com.codegym.case_study.service.customer.CustomerTypeService;
+import com.codegym.case_study.service.CustomerService;
+import com.codegym.case_study.service.CustomerTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;

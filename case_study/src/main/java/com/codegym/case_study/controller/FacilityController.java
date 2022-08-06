@@ -2,9 +2,9 @@ package com.codegym.case_study.controller;
 
 import com.codegym.case_study.dto.FacilityDto;
 import com.codegym.case_study.model.facility.Facility;
-import com.codegym.case_study.service.facility.FacilityService;
-import com.codegym.case_study.service.facility.FacilityTypeService;
-import com.codegym.case_study.service.facility.RentTypeService;
+import com.codegym.case_study.service.FacilityService;
+import com.codegym.case_study.service.FacilityTypeService;
+import com.codegym.case_study.service.RentTypeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;

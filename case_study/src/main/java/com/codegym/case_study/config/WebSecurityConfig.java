@@ -1,6 +1,6 @@
 package com.codegym.case_study.config;
 
-import com.codegym.case_study.service.MyUserDetailServiceImpl;
+import com.codegym.case_study.service.impl.MyUserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

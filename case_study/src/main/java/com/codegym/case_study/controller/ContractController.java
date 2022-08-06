@@ -2,12 +2,7 @@ package com.codegym.case_study.controller;
 
 import com.codegym.case_study.dto.ContractDto;
 import com.codegym.case_study.model.contract.Contract;
-import com.codegym.case_study.service.contract.AttachFacilityService;
-import com.codegym.case_study.service.contract.ContractDetailService;
-import com.codegym.case_study.service.contract.ContractService;
-import com.codegym.case_study.service.customer.CustomerService;
-import com.codegym.case_study.service.employee.EmployeeService;
-import com.codegym.case_study.service.facility.FacilityService;
+import com.codegym.case_study.service.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -17,8 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.constraints.Pattern;
 
 @Controller
 @RequestMapping("/contract")

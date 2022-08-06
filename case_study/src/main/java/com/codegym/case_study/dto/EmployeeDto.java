@@ -6,36 +6,45 @@ import com.codegym.case_study.model.employee.Position;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 
 public class EmployeeDto {
     private int idE;
 
-//    @NotBlank(message = "Không được để trống")
+    @NotBlank(message = "Không được để trống")
+    @Pattern(message = "Sai định dạng (VD: Nguyễn Văn A)", regexp = "^([A-Z\\p{L}]{1}[a-z\\p{L}]*)+(\\s([A-Z\\p{L}]{1}[a-z\\p{L}]*))*$")
     private String nameE;
 
-//    @NotBlank(message = "Không được để trống")
+    @NotBlank(message = "Không được để trống")
     private String birthDayE;
 
-//    @NotBlank(message = "Không được để trống")
+    @NotBlank(message = "Không được để trống")
+    @Pattern(message = "Sai định dạng (XXXXXXXXX với X là số từ 0 - 9)",regexp = "^[0-9]{9}")
     private String idCardE;
 
-//    @NotNull(message = "Không được để trống")
+    @NotNull(message = "Không được để trống")
+    @Pattern(message = "Phải nhập số và lớn hơn 0",regexp = "[1-9]+\\d*")
     private double salary;
 
-//    @NotBlank(message = "Không được để trống")
+    @NotBlank(message = "Không được để trống")
+    @Pattern(message = "sai định dạng 9 số",regexp = "^(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})$")
     private String phoneE;
 
-//    @NotBlank(message = "Không được để trống")
+    @NotBlank(message = "Không được để trống")
+    @Pattern(message = "abc@gmail.com",regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
     private String emailE;
 
-//    @NotBlank(message = "Không được để trống")
+    @NotBlank(message = "Không được để trống")
     private String addressE;
 
+    @NotBlank(message = "Không được để trống")
     private Position position;
 
+    @NotBlank(message = "Không được để trống")
     private EducationDegree educationDegree;
 
+    @NotBlank(message = "Không được để trống")
     private Division division;
 
     public EmployeeDto() {

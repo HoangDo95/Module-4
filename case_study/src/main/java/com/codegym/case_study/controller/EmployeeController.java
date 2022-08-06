@@ -58,7 +58,7 @@ public class EmployeeController {
 //    }
 
     @PostMapping("/save")
-    public String createEmployee(@Validated
+    public String createEmployee(
                                      @RequestParam("name") String nameE,
                                      @RequestParam("birthDay") String birtDayE,
                                      @RequestParam("idCard") String idCardE,
@@ -73,9 +73,6 @@ public class EmployeeController {
         model.addAttribute("positionList", positionService.findAll());
         model.addAttribute("educationDegreeList", educationDegreeService.findAll());
         model.addAttribute("divisionList", divisionService.findAll());
-//        if (bindingResult.hasFieldErrors()) {
-//            return "employee/create";
-//        }
         Employee employee = new Employee(nameE,birtDayE,idCardE,salary,phoneE,emailE,address,position,educationDegree,division);
 
         employeeService.save(employee);

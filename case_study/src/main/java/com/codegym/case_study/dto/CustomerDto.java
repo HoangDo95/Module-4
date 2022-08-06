@@ -10,32 +10,33 @@ import javax.validation.constraints.Pattern;
 public class CustomerDto {
 
     private int idC;
+
+    @NotBlank(message = "Không được để trống")
     private CustomerType customerType;
 
     @NotBlank(message = "Không được để trống")
-
+    @Pattern(message = "Sai định dạng (VD: Nguyễn Văn A)", regexp = "^([A-Z\\p{L}]{1}[a-z\\p{L}]*)+(\\s([A-Z\\p{L}]{1}[a-z\\p{L}]*))*$")
     private String nameC;
 
     @NotBlank(message = "Không được để trống")
     private String birthDayC;
 
-    @NotNull
+    @NotNull(message = "Không được để trống")
     private int gender;
 
     @NotBlank(message = "Không được để trống")
-    @Pattern(regexp = "^[0-9]{9}")
+    @Pattern(message = "Sai định dạng (XXXXXXXXX với X là số từ 0 - 9)",regexp = "^[0-9]{9}")
     private String idCardC;
 
     @NotBlank(message = "Không được để trống")
-    @Pattern(regexp = "^(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})$", message = "sai định dạng 9 numbers")
+    @Pattern(message = "sai định dạng 9 số",regexp = "^(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})$")
     private String phoneC;
 
     @Email
-    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "abc@gmail.com")
+    @Pattern(message = "abc@gmail.com",regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
     private String email;
 
     @NotBlank(message = "Không được để trống")
-
     private String address;
 
     public CustomerDto() {
